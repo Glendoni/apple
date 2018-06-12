@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
-})
+import { User } from '../../_models';
+import { UserService } from '../../_services';
+
+@Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit {
+    users: User[] = [];
 
-  constructor() { }
+    constructor(private userService: UserService) {}
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.userService.getAll().pipe(first()).subscribe(users => { 
+            this.users = users; 
+       });
+    }
 }

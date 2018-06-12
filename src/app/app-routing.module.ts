@@ -3,10 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
 
+import { TestmateComponent }  from './testmate/testmate.component';
+import { LoginComponent }  from './login/login.component';
+
 const appRoutes: Routes = [
-    //{ path: '', redirectTo: '/home', pathMatch: 'full' }
-  //{ path: '**', component: PageNotFoundComponent }
+  
+    { path: 'login', component: LoginComponent },
+
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
+
 
 
 @NgModule({

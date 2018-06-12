@@ -2,10 +2,10 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  
 import { HomeComponent }  from './home.component';
-
+import { AuthGuard } from '../../_guards';
 const homeRoutes: Routes = [
   
-  { path: 'home',  component: HomeComponent }
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
    
 ];
 
@@ -17,7 +17,7 @@ const homeRoutes: Routes = [
     RouterModule
   ]
 })
-export class HomeRoutingModule { }
+export const  HomeRoutingModule= RouterModule.forRoot(homeRoutes);
 
 
 /*
