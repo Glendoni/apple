@@ -11,10 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthGuard } from './_guards';
 import { JwtInterceptor } from './_helpers';
-import { AuthenticationService, UserService } from './_services';
+import { AlertService, AuthenticationService, UserService } from './_services';
 import { HomeModule }     from './home/home.module';
 import { LoginComponent }     from './login/login.component';
 import { TestmateComponent } from './testmate/testmate.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -27,12 +28,14 @@ import { TestmateComponent } from './testmate/testmate.component';
     declarations: [
         AppComponent,
         LoginComponent,
-        TestmateComponent
+        TestmateComponent,
+        RegisterComponent
     ],
     providers: [
         AuthGuard,
         AuthenticationService,
         UserService,
+        AlertService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
