@@ -9,14 +9,6 @@ const homeRoutes: Routes = [
    
 ];
 
-@NgModule({
-  imports: [
-    RouterModule.forChild(homeRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
-})
 export const  HomeRoutingModule= RouterModule.forRoot(homeRoutes);
 
 

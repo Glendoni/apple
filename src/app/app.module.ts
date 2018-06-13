@@ -22,7 +22,7 @@ import { RegisterComponent } from './register/register.component';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        HomeModule
+        HomeModule,
         AppRoutingModule
     ],
     declarations: [
