@@ -10,6 +10,7 @@ import { RegisterComponent }  from './register/register.component';
 const appRoutes: Routes = [
   
     { path: 'login', component: LoginComponent },
+     { path: 'logout', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 
     // otherwise redirect to home
