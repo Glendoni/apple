@@ -1,25 +1,4 @@
-
-<p>
-  home works!
-</p>
-
-
- 
-<ngx-smart-modal #myModal identifier="myModal">
-  <div *ngIf="myModal.hasData()">
-    <pre>{{ myModal.getData() | json }}</pre>
-  </div>
-
-  <button (click)="myModal.close()">Close</button>
-</ngx-smart-modal>
-
-<ngx-smart-modal #myModal2 identifier="myModal2">
-  <div *ngIf="myModal.hasData()">Pitty
-    <pre>{{ myModal.getData() | json }}</pre>
-  </div>
-
-  <button (click)="myModal2.close()">Close</button>
-</ngx-smart-modal>
-
-<button (click)="ngxSmartModalService.getModal('myModal').open()">Open myModal</button>
-<button (click)="ngxSmartModalService.getModal('myModal2').open()">Open myModal 2</button>
+<a routerLink="/home" routerLinkActive="active">Home </a> |
+<a routerLink="list" routerLinkActive="active"> List </a> |
+<a routerLink="department-list" routerLinkActive="active"> Department </a> 
+<router-outlet></router-outlet>

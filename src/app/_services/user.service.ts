@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
+import { BehaviorSubject } from 'rxjs/index';
 import { User } from '../_models';
 
 @Injectable()
@@ -37,6 +37,10 @@ export class UserService {
 
     delete(id: number) {
         return this.http.delete(this.url+'/api/users/' + id);
+    }
+      IsLoggedIn() {
+        // remove user from local storage to log user out
+       return localStorage.getItem('currentUser');
     }
 }
     

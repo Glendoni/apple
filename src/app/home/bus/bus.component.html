@@ -1,0 +1,11 @@
+
+<div class="zippy">
+    <div (click)="toggle()">Toggle</div>
+    <div [hidden]="!visible">
+        <p>Greate</p>
+        <div><code>observable|async</code>:
+       Time: {{ time | async }}</div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+

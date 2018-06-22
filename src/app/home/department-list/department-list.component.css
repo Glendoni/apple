@@ -1,9 +1,3 @@
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
-@import "~ngx-smart-modal/ngx-smart-modal.css";
-
-
-
-
 /* Master Styles */
 h1 {
     color: #369; 
@@ -100,7 +94,7 @@ h1 {
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE; 
+    background-color: #EEE;
     margin: .5em;
     padding: .3em;
     height: 1.6em;

@@ -19,7 +19,8 @@ export class BodyComponent implements OnInit {
 
     get master(): string { 
          console.log(this._master)
-        return this._master; }
+        return this._master;
+    }
  
  
     
