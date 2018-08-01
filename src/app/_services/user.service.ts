@@ -20,7 +20,7 @@ export class UserService {
         return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
         */
     getAll() {
-        return this.http.get<User[]>(this.url+'/api/get-details');
+        return this.http.get<User[]>(this.url+'/api/user');
     }
 
     getById(id: number) {
@@ -38,10 +38,4 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(this.url+'/api/users/' + id);
     }
-}
-    
-    
-    
-    
-    
-}
+}  
