@@ -19,6 +19,12 @@ export class UserService {
         };
         return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
         */
+
+
+    getStream() {
+        return this.http.get(this.url+'/api/stream');
+    }
+
     getAll() {
         return this.http.get<User[]>(this.url+'/api/user');
     }
@@ -28,7 +34,7 @@ export class UserService {
     }
 
     create(user: User) {
-        return this.http.post(this.url+'/api/register', user);
+        return this.http.post(this.url+'/api/auth/signup', user);
     }
 
     update(user: User) {
@@ -38,4 +44,4 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(this.url+'/api/users/' + id);
     }
-}  
+}
