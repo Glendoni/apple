@@ -93,6 +93,7 @@ export class AppComponent implements OnInit {
         this.service.getQuestions().subscribe((dynamic) => {
 
             this.fields = dynamic;
+
         });
 
         this.form = new FormGroup({

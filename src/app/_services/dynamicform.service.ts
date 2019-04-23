@@ -19,15 +19,24 @@ export class DynamicformService {
     url = 'http://127.0.0.1:8000';
 
 
-    /*
-       let httpOptions = {
+    let;
+    httpOptions = {
         headers: new HttpHeaders({
-        'Content-Type': 'application/text'
-    })
+            'Content-Type': 'application/text',
+            'X-Requested-With' : 'XMLHttpRequest',
+        })
     };
-    return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
-    */
 
+    /*
+return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
+*/
+
+
+    dropDown(user: User) {
+
+        //return drop;
+        return this.http.post(this.url + '/api/rtn/', user);
+    }
 
     getStream() {
         return this.http.get(this.url + '/api/stream');
@@ -50,35 +59,14 @@ export class DynamicformService {
     }
 
     delete(id: number) {
-        return this.http.delete(this.url + '/api/users/' + id);
     }
 
     getQuestions() {
-        return this.http.get<DynamicForm<any>[]>(this.url + '/api/stream');
+        return this.http.get(this.url + '/api/plan');
 
     }
 
 
-
-    getQuestion() {
-        //return this.http.get(this.url + '/api/stream');
-        return [
-            {
-                type: 'text',
-                name: 'firstName',
-                label: 'First Name',
-                value: 'when',
-                required: true,
-            },
-            {
-                type: 'text',
-                name: 'lastName',
-                label: 'Last Name',
-                value: '',
-                required: true,
-            },
-        ];
-    }
     onUpload(e) {
         console.log(e);
 

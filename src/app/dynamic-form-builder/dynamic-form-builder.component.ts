@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dynamic-form-builder',
-  template:`
+  template:`  {{ fields | json  }}
     <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
       <div *ngFor="let field of fields">
           <field-builder [field]="field" [form]="form"></field-builder>
@@ -16,7 +16,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
           <strong >Saved all values</strong>
         </div>
       </div>
-    </form> {{ fields | json  }}
+    </form> {{ form.value | json  }}
   `,
 })
 export class DynamicFormBuilderComponent implements OnInit {
@@ -26,7 +26,7 @@ export class DynamicFormBuilderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let fieldsCtrls = {};
+    const fieldsCtrls = {};
     for (let f of this.fields) {
       if (f.type != 'checkbox') {
         fieldsCtrls[f.name] = new FormControl(f.value || '', Validators.required)

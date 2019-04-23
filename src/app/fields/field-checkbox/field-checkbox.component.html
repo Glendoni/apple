@@ -1,0 +1,32 @@
+<h2>Add New {{ selectedFieldType.name  }}</h2>
+
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+      <div *ngIf="f.name.errors.required">name is required</div>
+    </div>
+  </div>
+
+  <h3>add and remove groups with validatioon to form dynamically <button (click)="addGroup()">Add</button></h3>
+
+  <div formArrayName="times" *ngFor="let time of f.times?.value; let i = index; trackBy:trackByFn">
+
+    <div [formGroupName]="i">
+     option value:  <input placeholder="checkbox value" formControlName="value">
+      description: <input placeholder="checkbox description" formControlName="description">
+
+    </div>
+    <span (click)="removeGroup(i)">Remove this group</span>
+    <div *ngIf="(getValidity(i))">This field must be filled out</div>
+  </div>
+  <br>
+
+  <br>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+{{ form.value | json}}
+{{ selectedFieldType | json}}

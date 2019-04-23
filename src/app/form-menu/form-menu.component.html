@@ -1,0 +1,28 @@
+<nav>
+
+    <ul class="filedTypeMenu">
+        <li *ngFor="let filedTypeMenu of filedTypeMenus"
+            [class.selected]="filedTypeMenu === selectedFieldType"
+            (click)="onSelect(filedTypeMenu)">
+            <span class="badge">{{filedTypeMenu.name}}</span>
+        </li>
+    </ul>
+
+</nav>
+
+<div *ngIf="selectedFieldType?.name">
+    <div [ngSwitch]="selectedFieldType.name">
+        <ng-template [ngSwitchCase]="'Dropdown / Select'">
+            <app-field-dropdown [selectedFieldType]="selectedFieldType"></app-field-dropdown>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'Checkbox'">
+            <app-field-checkbox [selectedFieldType]="selectedFieldType"></app-field-checkbox>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'Radio'">
+            <app-field-radio [selectedFieldType]="selectedFieldType"></app-field-radio>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'Textbox'">
+            <app-field-textbox [selectedFieldType]="selectedFieldType"></app-field-textbox>
+        </ng-template>
+    </div>
+</div>

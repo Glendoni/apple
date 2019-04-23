@@ -16,6 +16,12 @@ import { TestmateComponent } from './testmate/testmate.component';
 import { RegisterComponent } from './register/register.component';
 
 import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
+import { FormMenuComponent } from './form-menu/form-menu.component';
+//import { FieldTextComponent } from './fields/field-text/field-text.component';
+import { FieldCheckboxComponent } from './fields/field-checkbox/field-checkbox.component';
+import { FieldRadioComponent } from './fields/field-radio/field-radio.component';
+import { FieldTextboxComponent } from './fields/field-textbox/field-textbox.component';
+import { FieldDropdownComponent } from './fields/field-dropdown/field-dropdown.component';
 
 @NgModule({
     imports: [
@@ -32,6 +38,11 @@ import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-bu
         TestmateComponent,
         RegisterComponent,
         AppComponent,
+        FormMenuComponent,
+        FieldCheckboxComponent,
+        FieldRadioComponent,
+        FieldTextboxComponent,
+        FieldDropdownComponent,
     ],
     providers: [
         AuthGuard,
