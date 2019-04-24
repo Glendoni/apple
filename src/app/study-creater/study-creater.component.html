@@ -1,0 +1,25 @@
+<h1>Site Creater</h1>
+
+<div>
+  <div (click)="onCancel()">Cancel</div>
+
+</div>
+
+{{ siteDetails }}
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+      <div *ngIf="f.name.errors.required">name is required</div>
+    </div>
+  </div>
+  <br>
+
+  <br>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+{{ form.value | json}}
+

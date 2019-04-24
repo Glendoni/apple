@@ -1,4 +1,4 @@
-<h2>Add New {{ selectedFieldType.name  }}</h2>
+<h2>{{ selectedFieldType.name  }}</h2>
 
 <form [formGroup]="form">
 
@@ -9,6 +9,20 @@
     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
       <div *ngIf="f.name.errors.required">name is required</div>
     </div>
+  </div>
+
+  <h3>add and remove groups with validatioon to form dynamically
+    <button (click)="addGroup()">Add</button>
+  </h3>
+
+  <div formArrayName="times" *ngFor="let time of f.times?.value; let i = index; trackBy:trackByFn">
+    <div [formGroupName]="i">
+      <input placeholder="from" formControlName="from">
+      <input placeholder="to" formControlName="to">
+
+    </div>
+    <span (click)="removeGroup(i)">Remove this group</span>
+    <div *ngIf="(getValidity(i))">This field must be filled out</div>
   </div>
   <br>
 

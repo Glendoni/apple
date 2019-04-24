@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="40f2e857-7128-436e-a31e-767eff247de3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_services/dynamicform.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/_services/dynamicform.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamic-form-builder/atoms/dropdown.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-form-builder/atoms/dropdown.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamic-form-builder/atoms/radio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-form-builder/atoms/radio.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamic-form-builder/dynamic-form-builder.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-form-builder/dynamic-form-builder.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/home/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +20,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app.module.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+                <state relative-caret-position="420">
+                  <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                     <element signature="e#1010#1100#0" expanded="true" />
@@ -90,8 +83,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1335" />
-    <option name="height" value="900" />
+    <option name="x" value="478" />
+    <option name="y" value="-1080" />
+    <option name="width" value="954" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -166,19 +161,19 @@
       <option name="presentableId" value="Default" />
       <updated>1555327355386</updated>
       <workItem from="1555327356731" duration="37450000" />
-      <workItem from="1555582145441" duration="3564000" />
+      <workItem from="1555582145441" duration="4049000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41014000" />
+    <option name="totallyTimeSpent" value="41499000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1335" height="900" extended-state="0" />
+    <frame x="478" y="-1080" width="954" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15390565" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21820176" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -270,8 +265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="420">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#1010#1100#0" expanded="true" />

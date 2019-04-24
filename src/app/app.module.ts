@@ -22,6 +22,10 @@ import { FieldCheckboxComponent } from './fields/field-checkbox/field-checkbox.c
 import { FieldRadioComponent } from './fields/field-radio/field-radio.component';
 import { FieldTextboxComponent } from './fields/field-textbox/field-textbox.component';
 import { FieldDropdownComponent } from './fields/field-dropdown/field-dropdown.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudyListingComponent } from './study-listing/study-listing.component';
+import { StudyCreaterComponent } from './study-creater/study-creater.component';
+import { StudyListingEditComponent } from './study-listing-edit/study-listing-edit.component';
 
 @NgModule({
     imports: [
@@ -43,6 +47,10 @@ import { FieldDropdownComponent } from './fields/field-dropdown/field-dropdown.c
         FieldRadioComponent,
         FieldTextboxComponent,
         FieldDropdownComponent,
+        DashboardComponent,
+        StudyListingComponent,
+        StudyCreaterComponent,
+        StudyListingEditComponent,
     ],
     providers: [
         AuthGuard,

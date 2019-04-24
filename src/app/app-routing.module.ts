@@ -7,6 +7,10 @@ import {TestmateComponent} from './testmate/testmate.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {FormMenuComponent} from './form-menu/form-menu.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import { StudyCreaterComponent } from './study-creater/study-creater.component';
+import { StudyListingComponent } from './study-listing/study-listing.component';
+import { StudyListingEditComponent } from './study-listing-edit/study-listing-edit.component';
 //import {FieldTextComponent} from './fields/field-text/field-text.component';
 const appRoutes: Routes = [
 
@@ -14,7 +18,10 @@ const appRoutes: Routes = [
     {path: 'logout', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'form-menu', component: FormMenuComponent},
-    //{path: 'filed-text', component: FieldTextComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'studycreater', component: StudyCreaterComponent},
+    {path: 'studylisting/:id', component: StudyListingComponent},
+    {path: 'studylistingedit/:id', component: StudyListingEditComponent},
     // otherwise redirect to home
     {path: '**', redirectTo: ''}
 ];

@@ -1,0 +1,30 @@
+
+{{ siteDetails | json }}
+
+<div>
+  <div (click)="onCancel()">Cancel</div>
+
+</div>
+
+<div *ngIf="!showListingEdit">
+  <button>Add Field</button>
+  <div *ngFor="let field of fields">
+    <p> Type: {{ field.type }} <br> Question: {{ field.label }} {{ field.question_uniqid }}</p>
+    <ul>
+      <option *ngFor="let option of field.options">{{ option.label }} {{option.key == field.value ? 'default' : '' }} </option>
+    </ul>
+    <a  (click)="onShowListingEdit(field.question_uniqid)" >
+      Edit
+    </a>
+  </div>
+</div>
+<div *ngIf="!fields">
+  <p>I  have nothing</p>
+</div>
+
+
+
+<div *ngIf="showListingEdit">
+  <app-study-listing-edit   [siteDetails]="showListingEdit" ></app-study-listing-edit>
+
+</div>

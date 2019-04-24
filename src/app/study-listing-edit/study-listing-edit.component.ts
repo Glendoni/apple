@@ -1,22 +1,24 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FiledType} from '../../fieldType';
+import {Component, OnInit, Input} from '@angular/core';
+import {FiledType} from '../fieldType';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
-import {DynamicformService} from '../../_services';
+import {DynamicformService} from '../_services';
+
 
 @Component({
-    selector: 'app-field-dropdown',
-    templateUrl: './field-dropdown.component.html',
-    styleUrls: ['./field-dropdown.component.css']
+    selector: 'app-study-listing-edit',
+    templateUrl: './study-listing-edit.component.html',
+    styleUrls: ['./study-listing-edit.component.css']
 })
-export class FieldDropdownComponent implements OnInit {
-
-    @Input() selectedFieldType: FiledType;
+export class StudyListingEditComponent implements OnInit {
+    @Input() siteDetails;
     form: FormGroup;
 
     loading = false;
     submitted = false;
-    Field;
+    Field = 'Namousta';
+    fields = [];
+    options;
 
     value = this.fb.group({
 
@@ -32,13 +34,28 @@ export class FieldDropdownComponent implements OnInit {
     ngOnInit() {
         this.form = this.fb.group({
             options: this.fb.array([]),
-            name: ['glendonsmall@yahoo.co.uk', Validators.required],
-            label: ['My From Label Name', Validators.required],
-            type: [this.selectedFieldType.id, Validators.required],
+
+            name: ['', Validators.required],
+            label: ['', Validators.required],
+            type: ['', Validators.required],
             value: [''],
-            required: [false],
+            question_uniqid: [''],
+            required: [],
         });
-        this.Field = this.selectedFieldType.name;
+
+        this.service.listEdit(this.siteDetails).subscribe((dynamic) => {
+
+            this.fields = dynamic;
+
+            this.f.name.setValue(this.fields[0].name);
+            this.f.label.setValue(this.fields[0].label);
+            this.f.value.setValue(this.fields[0].value);
+            this.f.type.setValue(this.fields[0].type);
+            this.f.required.setValue(this.fields[0].required);
+            this.f.question_uniqid.setValue(this.fields[0].question_uniqid);
+            //  this.options = this.fields[0].options[0];
+        });
+        // this.Field = this.selectedFieldType.name;
     }
 
     // convenience getter for easy access to form fields
@@ -82,7 +99,7 @@ export class FieldDropdownComponent implements OnInit {
         if ((!optionLength) || this.form.valid === false) {
             return;
         }
-        this.service.dropDown(this.form.value)
+        this.service.saveEditStudyField(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {

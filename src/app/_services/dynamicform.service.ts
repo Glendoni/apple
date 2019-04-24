@@ -18,12 +18,12 @@ export class DynamicformService {
 
     url = 'http://127.0.0.1:8000';
 
-
+    edit;
     let;
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/text',
-            'X-Requested-With' : 'XMLHttpRequest',
+            'X-Requested-With': 'XMLHttpRequest',
         })
     };
 
@@ -54,11 +54,30 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
         return this.http.post(this.url + '/api/rtn', user);
     }
 
-    update(user: User) {
-        return this.http.put(this.url + '/api/users/' + user.id, user);
+    createStudy(user: User) {
+        return this.http.post(this.url + '/api/createstudy/', user);
     }
 
+    listStudy() {
+        return this.http.get(this.url + '/api/liststudy/');
+    }
+
+
+    listEdit(value) {
+console.log(value);
+        return this.http.get(this.url + '/api/liststudyedit/' + value);
+    }
+
+
     delete(id: number) {
+    }
+
+    editStudyField(user: User) {
+        return this.http.post(this.url + '/api/editStudyField/', user);
+    }
+
+    saveEditStudyField(user: User) {
+        return this.http.post(this.url + '/api/saveEditStudyField/', user);
     }
 
     getQuestions() {
@@ -66,6 +85,9 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
 
     }
 
+    getStudyQuestions(study) {
+        return this.http.post(this.url + '/api/plans', study);
+    }
 
     onUpload(e) {
         console.log(e);

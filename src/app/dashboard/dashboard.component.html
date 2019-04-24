@@ -1,0 +1,28 @@
+<p>
+    dashboard works!
+</p>
+
+
+<div *ngIf="!moduleSwitcher">
+    <p><a (click)="onCreateStudy()">Create New Study</a></p>
+    {{ fields | json }}
+    <a *ngFor="let filed of fields" (click)="onModuleSwitcher(filed)"
+       routerLinkActive="active">{{filed.name }}</a>
+
+</div>
+
+
+<div *ngIf="createStudy">
+<app-study-creater (close)="onClose($event)"></app-study-creater>
+</div>
+
+
+<div *ngIf="moduleSwitcher">
+
+            <app-study-listing [siteDetails]="moduleSwitcher" (close)="onClose($event)"></app-study-listing>
+
+
+    </div>
+
+
+
