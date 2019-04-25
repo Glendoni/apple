@@ -51,15 +51,18 @@ export class StudyListingEditComponent implements OnInit {
     }
 
     generateFormOptions(options = null) {
-        options.map(item => {
-            const val = this.fb.group({
-                key: [item.key, Validators.required],
-                label: [item.label, Validators.required]
+        if ( Array.isArray(options)) {
+            options.map(item => {
+                const val = this.fb.group({
+                    key: [item.key, Validators.required],
+                    label: [item.label, Validators.required]
+                });
+                const form = this.form.get('options') as FormArray;
+                form.push(val);
+                return options;
             });
-            const form = this.form.get('options') as FormArray;
-            form.push(val);
-            return item;
-        });
+        }
+        return options;
     }
     // convenience getter for easy access to form fields
     get f() {
