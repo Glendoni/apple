@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { FiledType } from '../fieldType';
 import { FiledTypeMenu } from '../fieldTypeMenu';
@@ -10,10 +10,11 @@ import { FiledTypeMenu } from '../fieldTypeMenu';
 })
 export class FormMenuComponent implements OnInit {
 
-
+@Input() studyId;
   filedTypeMenus = FiledTypeMenu;
 
   selectedFieldType: FiledType;
+
 
   constructor() { }
 

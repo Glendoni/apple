@@ -13,7 +13,7 @@
 <div *ngIf="selectedFieldType?.name">
     <div [ngSwitch]="selectedFieldType.name">
         <ng-template [ngSwitchCase]="'Dropdown / Select'">
-            <app-field-dropdown [selectedFieldType]="selectedFieldType"></app-field-dropdown>
+            <app-field-dropdown [selectedFieldType]="selectedFieldType" [studyId]="studyId"></app-field-dropdown>
         </ng-template>
         <ng-template [ngSwitchCase]="'Checkbox'">
             <app-field-checkbox [selectedFieldType]="selectedFieldType"></app-field-checkbox>
@@ -26,3 +26,4 @@
         </ng-template>
     </div>
 </div>
+{{ studyId }}

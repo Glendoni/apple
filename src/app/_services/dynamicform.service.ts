@@ -35,7 +35,7 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
     dropDown(user: User) {
 
         //return drop;
-        return this.http.post(this.url + '/api/rtn/', user);
+        return this.http.post(this.url + '/api/create/', user);
     }
 
     getStream() {

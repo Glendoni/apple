@@ -7,7 +7,13 @@
 </div>
 
 <div *ngIf="!showListingEdit">
-  <button>Add Field</button>
+
+  <button  (click)="onCreateNewField()" >Add Field</button>
+  <div *ngIf="showListingCreate">
+    <app-form-menu  [studyId]="studyId" ></app-form-menu>
+
+  </div>
+
   <div *ngFor="let field of fields">
     <p> Type: {{ field.type }} <br> Question: {{ field.label }} {{ field.question_uniqid }}</p>
     <ul>
@@ -24,7 +30,12 @@
 
 
 
-<div *ngIf="showListingEdit">
+
+<div *ngIf="showListingEditer">
   <app-study-listing-edit   [siteDetails]="showListingEdit" ></app-study-listing-edit>
 
 </div>
+
+
+
+

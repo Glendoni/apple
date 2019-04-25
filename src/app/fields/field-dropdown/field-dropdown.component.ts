@@ -12,6 +12,7 @@ import {DynamicformService} from '../../_services';
 export class FieldDropdownComponent implements OnInit {
 
     @Input() selectedFieldType: FiledType;
+    @Input() studyId;
     form: FormGroup;
 
     loading = false;
@@ -25,8 +26,6 @@ export class FieldDropdownComponent implements OnInit {
     });
 
     constructor(private fb: FormBuilder, private service: DynamicformService) {
-
-
     }
 
     ngOnInit() {
@@ -35,6 +34,7 @@ export class FieldDropdownComponent implements OnInit {
             name: ['glendonsmall@yahoo.co.uk', Validators.required],
             label: ['My From Label Name', Validators.required],
             type: [this.selectedFieldType.id, Validators.required],
+            studyId: [this.studyId, Validators.required],
             value: [''],
             required: [false],
         });

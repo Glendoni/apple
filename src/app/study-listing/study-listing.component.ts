@@ -19,6 +19,9 @@ export class StudyListingComponent implements OnInit {
 
   public fields: any[];
   showListingEdit = false;
+  showListingEditer = false;
+  showListingCreate = false;
+  studyId;
 
   public _fields: any[] = [
     {
@@ -106,6 +109,16 @@ export class StudyListingComponent implements OnInit {
     this.form = new FormGroup({
       fields: new FormControl(JSON.stringify(this.fields))
     });
+
+
+  }
+
+
+  onCreateNewField() {
+    console.log(this.siteDetails.id);
+    this.showListingCreate = true;
+    this.studyId = this.siteDetails.id;
+
   }
 
   onUpload(e) {
@@ -140,7 +153,8 @@ export class StudyListingComponent implements OnInit {
   }
 
   onShowListingEdit(value): void{
-    console.log(value)
+
+    this.showListingEditer = true;
     this.showListingEdit = value;
   }
 

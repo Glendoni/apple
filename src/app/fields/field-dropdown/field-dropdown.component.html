@@ -1,5 +1,8 @@
 <h2>Add New {{ Field  }}</h2>
 
+
+{{ studyId}}
+
 <form [formGroup]="form">
 
     <div class="form-group">
@@ -38,6 +41,8 @@
     <div class="form-group">
 
         <input type="hidden" formControlName="type" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.type.errors }"/>
+        <input type="hidden" formControlName="studyId" class="form-control"
                [ngClass]="{ 'is-invalid': submitted && f.type.errors }"/>
 
 
