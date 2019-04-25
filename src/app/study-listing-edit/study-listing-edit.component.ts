@@ -15,7 +15,6 @@ export class StudyListingEditComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
-    Field = 'Namousta';
     fields;
     options;
 
@@ -41,17 +40,27 @@ export class StudyListingEditComponent implements OnInit {
 
         this.service.getQuestionStream(this.siteDetails).subscribe((data) => {
             this.fields = data;
-            this.f.name.setValue(this.fields[0].name);
-            this.f.label.setValue(this.fields[0].label);
-            this.f.value.setValue(this.fields[0].value);
-            this.f.type.setValue(this.fields[0].type);
-            this.f.required.setValue(this.fields[0].required);
-            this.f.question_uniqid.setValue(this.fields[0].question_uniqid);
-            //  this.options = this.fields[0].options[0];
+            this.f.name.setValue(data[0].name);
+            this.f.label.setValue(data[0].label);
+            this.f.value.setValue(data[0].value);
+            this.f.type.setValue(data[0].type);
+            this.f.required.setValue(data[0].required);
+            this.f.question_uniqid.setValue(data[0].question_uniqid);
+            this.f.options.setValue(this.generateFormOptions(data[0].options));
         });
-        // this.Field = this.selectedFieldType.name;
     }
 
+    generateFormOptions(options = null) {
+        options.map(item => {
+            const val = this.fb.group({
+                key: [item.key, Validators.required],
+                label: [item.label, Validators.required]
+            });
+            const form = this.form.get('options') as FormArray;
+            form.push(val);
+            return item;
+        });
+    }
     // convenience getter for easy access to form fields
     get f() {
         return this.form.controls;
@@ -69,7 +78,6 @@ export class StudyListingEditComponent implements OnInit {
 
         const form = this.form.get('options') as FormArray;
         form.push(val);
-
     }
 
     removeGroup(index) {
