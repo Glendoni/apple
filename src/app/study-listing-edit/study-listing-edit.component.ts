@@ -13,22 +13,18 @@ import {DynamicformService} from '../_services';
 export class StudyListingEditComponent implements OnInit {
     @Input() siteDetails;
     form: FormGroup;
-
     loading = false;
     submitted = false;
     Field = 'Namousta';
-    fields = [];
+    fields;
     options;
 
     value = this.fb.group({
-
         key: ['', Validators.required],
         label: ['', Validators.required]
     });
 
     constructor(private fb: FormBuilder, private service: DynamicformService) {
-
-
     }
 
     ngOnInit() {
@@ -43,10 +39,8 @@ export class StudyListingEditComponent implements OnInit {
             required: [],
         });
 
-        this.service.listEdit(this.siteDetails).subscribe((dynamic) => {
-
-            this.fields = dynamic;
-
+        this.service.getQuestionStream(this.siteDetails).subscribe((data) => {
+            this.fields = data;
             this.f.name.setValue(this.fields[0].name);
             this.f.label.setValue(this.fields[0].label);
             this.f.value.setValue(this.fields[0].value);
@@ -68,14 +62,12 @@ export class StudyListingEditComponent implements OnInit {
     }
 
     addGroup() {
-
         const val = this.fb.group({
             key: ['', Validators.required],
             label: ['', Validators.required]
         });
 
         const form = this.form.get('options') as FormArray;
-
         form.push(val);
 
     }
@@ -91,23 +83,15 @@ export class StudyListingEditComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
         const optionLength = this.form.value.options.length;
-        console.log('option: ', this.form.value.options.length);
-        console.log('value: ', this.form.value);
-        console.log('valid: ', this.form.valid);
         if ((!optionLength) || this.form.valid === false) {
             return;
         }
-        this.service.saveEditStudyField(this.form.value)
+        this.service.updateQuestionStream(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    console.log(data);
-                    //this.alertService.success('Registration successful', true);
-                    // this.router.navigate(['/login']);
                 }
             );
     }
-
 }

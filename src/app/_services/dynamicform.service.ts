@@ -10,7 +10,6 @@ const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-
 @Injectable()
 export class DynamicformService {
     constructor(private http: HttpClient) {
@@ -30,67 +29,37 @@ export class DynamicformService {
     /*
 return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
 */
-
-
-    dropDown(user: User) {
-
+    createQuestion(user: User) {
         //return drop;
         return this.http.post(this.url + '/api/create/', user);
-    }
-
-    getStream() {
-        return this.http.get(this.url + '/api/stream');
-    }
-
-    getAll() {
-        return this.http.get<DynamicForm<any>[]>(this.url + '/api/user');
-    }
-
-    getById(id: number) {
-        return this.http.get(this.url + '/api/users/' + id);
     }
 
     create(user: User) {
         return this.http.post(this.url + '/api/rtn', user);
     }
-
     createStudy(user: User) {
         return this.http.post(this.url + '/api/createstudy/', user);
     }
-
-    listStudy() {
-        return this.http.get(this.url + '/api/liststudy/');
+    getStudies() {
+        return this.http.get(this.url + '/api/studies/');
+    }
+    getQuestionStream(value) {
+        return this.http.get(this.url + '/api/questionstream/' + value);
     }
 
-
-    listEdit(value) {
-console.log(value);
-        return this.http.get(this.url + '/api/liststudyedit/' + value);
-    }
-
-
-    delete(id: number) {
-    }
-
-    editStudyField(user: User) {
-        return this.http.post(this.url + '/api/editStudyField/', user);
-    }
-
-    saveEditStudyField(user: User) {
+    updateQuestionStream(user: User) {
         return this.http.post(this.url + '/api/saveEditStudyField/', user);
     }
 
-    getQuestions() {
-        return this.http.get(this.url + '/api/plan');
-
+    getQuestionStreams() {
+        return this.http.get(this.url + '/api/questionstreams');
     }
 
     getStudyQuestions(study) {
-        return this.http.post(this.url + '/api/plans', study);
+        return this.http.post(this.url + '/api/getStudyQuestions', study);
     }
 
     onUpload(e) {
         console.log(e);
-
     }
 }

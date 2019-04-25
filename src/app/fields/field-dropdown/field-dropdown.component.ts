@@ -31,8 +31,8 @@ export class FieldDropdownComponent implements OnInit {
     ngOnInit() {
         this.form = this.fb.group({
             options: this.fb.array([]),
-            name: ['glendonsmall@yahoo.co.uk', Validators.required],
-            label: ['My From Label Name', Validators.required],
+            name: ['', Validators.required],
+            label: ['', Validators.required],
             type: [this.selectedFieldType.id, Validators.required],
             studyId: [this.studyId, Validators.required],
             value: [''],
@@ -51,16 +51,13 @@ export class FieldDropdownComponent implements OnInit {
     }
 
     addGroup() {
-
         const val = this.fb.group({
             key: ['', Validators.required],
             label: ['', Validators.required]
         });
 
         const form = this.form.get('options') as FormArray;
-
         form.push(val);
-
     }
 
     removeGroup(index) {
@@ -82,7 +79,7 @@ export class FieldDropdownComponent implements OnInit {
         if ((!optionLength) || this.form.valid === false) {
             return;
         }
-        this.service.dropDown(this.form.value)
+        this.service.createQuestion(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
