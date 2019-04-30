@@ -2,12 +2,19 @@
 import {RouterModule, Routes} from '@angular/router';
 
 import {HomeComponent} from './home.component';
+import {FormComponent} from '../form/form.component';
 import {AuthGuard} from '../../_guards';
 
 const homeRoutes: Routes = [
 
-    {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-
+    {
+        path: 'home', component: HomeComponent, canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'form',
+                component: FormComponent,
+            }]
+    }
 ];
 
 export const HomeRoutingModule = RouterModule.forRoot(homeRoutes);

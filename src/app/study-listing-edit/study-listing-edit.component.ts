@@ -36,6 +36,7 @@ export class StudyListingEditComponent implements OnInit {
             value: [''],
             question_uniqid: [''],
             required: [],
+            trackingId: this.generateUniqueId(),
         });
 
         this.service.getQuestionStream(this.siteDetails).subscribe((data) => {
@@ -50,14 +51,22 @@ export class StudyListingEditComponent implements OnInit {
         });
     }
 
+
+
+    generateUniqueId() {
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+
     generateFormOptions(options = null) {
         if ( Array.isArray(options)) {
+
+            const form = this.form.get('options') as FormArray;
             options.map(item => {
                 const val = this.fb.group({
                     key: [item.key, Validators.required],
                     label: [item.label, Validators.required]
                 });
-                const form = this.form.get('options') as FormArray;
+
                 form.push(val);
                 return options;
             });
@@ -83,13 +92,23 @@ export class StudyListingEditComponent implements OnInit {
         form.push(val);
     }
 
-    removeGroup(index) {
-        const form = this.form.get('options') as FormArray;
-        form.removeAt(index);
+    removeGroup(index: number) {
+
+        console.log(index);
+      //  const form = this.form.get('options') as FormArray;
+        // console.log(form.controls)
+        //form.removeAt(index);
+
+
+        const control = <FormArray>this.form.controls['options'];
+
+       control.removeAt(index);
+
+        // control.removeAt(this.form.value.findIndex(control => control.option === index));
     }
 
-    trackByFn(index: any, options: any) {
-        return index;
+    trackByFn(index: any,  item: any) {
+        return item.trackingId;
     }
 
     onSubmit() {

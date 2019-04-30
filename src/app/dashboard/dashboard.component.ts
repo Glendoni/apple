@@ -13,7 +13,9 @@ export class DashboardComponent implements OnInit {
     selectedFieldType = false;
     moduleSwitcher = false;
     createStudy = false;
-
+    editStudy = false;
+    users = false;
+    invite = false;
     constructor(private service: DynamicformService) {}
 
     ngOnInit() {
@@ -31,8 +33,23 @@ export class DashboardComponent implements OnInit {
         this.createStudy = true;
     }
 
+    onEditStudy(value){
+console.log(value[0])
+        this.editStudy = value[0];
+        this.moduleSwitcher = true;
+    }
+
+    onUsers(value){
+console.log(value[0])
+        this.users = true;
+this.invite = value[0];
+        this.moduleSwitcher = true;
+    }
+
     onClose(event: Event): void {
+        this.users = false;
         this.createStudy = false;
+        this.editStudy = false;
         this.moduleSwitcher = false;
     }
 }

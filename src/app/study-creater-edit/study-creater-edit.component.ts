@@ -1,16 +1,16 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
-import {AuthenticationService, DynamicformService} from '../_services';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthenticationService, DynamicformService} from "../_services";
 import {ActivatedRoute, Router} from "@angular/router";
-
+import {first} from "rxjs/operators";
 
 @Component({
-  selector: 'app-study-creater',
-  templateUrl: './study-creater.component.html',
-  styleUrls: ['./study-creater.component.css']
+  selector: 'app-study-creater-edit',
+  templateUrl: './study-creater-edit.component.html',
+  styleUrls: ['./study-creater-edit.component.css']
 })
-export class StudyCreaterComponent implements OnInit {
+export class StudyCreaterEditComponent implements OnInit {
+
   form: FormGroup;
   submitted = false;
   placeholder = 'Enter Site Name';
@@ -26,8 +26,16 @@ export class StudyCreaterComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       invite_code: ['', Validators.required],
-
+      studyId: [this.siteDetails, Validators.required],
     });
+
+    this.service.getStudy(this.siteDetails).subscribe(data => {
+
+      this.f.name.setValue(data.name);
+      this.f.description.setValue(data.description);
+      this.f.invite_code.setValue(data.invite_code);
+    })
+
   }
   // convenience getter for easy access to form fields
   get f() {
@@ -39,11 +47,11 @@ export class StudyCreaterComponent implements OnInit {
     console.log('value: ', this.form.value);
     console.log('valid: ', this.form.valid);
 
-    this.service.createStudy(this.form.value)
+    this.service.editStudy(this.form.value)
         .pipe(first())
         .subscribe(
             data => {
-               console.log(data);
+              console.log(data);
               //this.alertService.success('Registration successful', true);
               // this.router.navigate(['/login']);
               this.router.navigate(['/dashboard']);
@@ -57,4 +65,5 @@ export class StudyCreaterComponent implements OnInit {
     this.close.emit(null);
 
   }
+
 }

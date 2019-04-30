@@ -53,7 +53,7 @@
 
   <br>
 
-  <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; trackBy:trackByFn">
+  <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; ">
     <div [formGroupName]="i">
       <input placeholder="option value" formControlName="key">
       <input placeholder="option label" formControlName="label">
@@ -61,8 +61,9 @@
     </div>
 
     <div *ngIf="(getValidity(i))">This field must be filled out</div>
-    <span (click)="removeGroup(i)">Remove this group</span>
+
     <br>
+    <p (click)="removeGroup(i)">Remove this group</p>
   </div>
   <h3>add and remove groups with validation to form dynamically
     <button (click)="addGroup()">Add</button>

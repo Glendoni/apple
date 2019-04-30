@@ -6,14 +6,25 @@
 <div *ngIf="!moduleSwitcher">
     <p><a (click)="onCreateStudy()">Create New Study</a></p>
     {{ fields | json }}
-    <a *ngFor="let filed of fields" (click)="onModuleSwitcher(filed)"
-       routerLinkActive="active">{{filed.name }}</a>
+   <p *ngFor="let field of fields"><a  (click)="onModuleSwitcher(filed)"
+       routerLinkActive="active">{{field.name }}</a> | <a (click)="onEditStudy([field.id])">Edit</a> | <a (click)="onUsers([field.id])">Users</a>
+       <br>{{ field.description }}
 
+      </p>
 </div>
 
 
 <div *ngIf="createStudy">
-<app-study-creater (close)="onClose($event)"></app-study-creater>
+    <app-study-creater (close)="onClose($event)"></app-study-creater>
+</div>
+
+<div *ngIf="editStudy">
+    <app-study-creater-edit [siteDetails]="editStudy"  (close)="onClose($event)"></app-study-creater-edit>
+</div>
+
+
+<div *ngIf="users">
+    <app-users [siteDetails]="invite"  (close)="onClose($event)"></app-users>
 </div>
 
 

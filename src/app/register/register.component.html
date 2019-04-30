@@ -23,10 +23,10 @@
     </div>
     <div class="form-group">
         <label for="c_password">Password Repeat</label>
-        <input type="password" formControlName="password_confirmation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password_confirmation.errors }" />
-        <div *ngIf="submitted && f.password_confirmation.errors" class="invalid-feedback">
-            <div *ngIf="f.password_confirmation.errors.required">password is required</div>
-            <div *ngIf="f.password_confirmation.errors.minlength">password must be at least 6 characters</div>
+        <input type="password" formControlName="c_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.c_password.errors }" />
+        <div *ngIf="submitted && f.c_password.errors" class="invalid-feedback">
+            <div *ngIf="f.c_password.errors.required">password is required</div>
+            <div *ngIf="f.c_password.errors.minlength">password must be at least 6 characters</div>
         </div>
     </div>
     <div class="form-group">

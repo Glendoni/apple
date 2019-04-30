@@ -1,9 +1,21 @@
 
-<p>
-  home works!
-</p>
-<div *ngFor="let user of users">
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
+<nav>
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+
+</nav>
+
+<div *ngIf="!moduleSwitcher">
+
+   <p *ngFor="let filed of fields"> <a  (click)="onModuleSwitcher(filed)"
+       routerLinkActive="active">{{filed.name }}</a> </p>
+
 </div>
 
+<div *ngIf="moduleSwitcher">
+
+    <app-form [siteDetails]="moduleSwitcher" (close)="onClose($event)"></app-form>
+
+
+</div>
+
+<router-outlet></router-outlet>

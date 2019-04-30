@@ -52,9 +52,9 @@
 
     <br>
 
-    <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; trackBy:trackByFn">
+    <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; ">
         <div [formGroupName]="i">
-            <input placeholder="option value" formControlName="key">
+            <input placeholder="option value" formControlName="key" ng-model="option[$index].value">
             <input placeholder="option label" formControlName="label">
 
         </div>

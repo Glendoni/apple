@@ -12,6 +12,7 @@ import { StudyCreaterComponent } from './study-creater/study-creater.component';
 import { StudyListingComponent } from './study-listing/study-listing.component';
 import { StudyListingEditComponent } from './study-listing-edit/study-listing-edit.component';
 //import {FieldTextComponent} from './fields/field-text/field-text.component';
+import { InviteComponent } from './invite/invite.component';
 const appRoutes: Routes = [
 
     {path: 'login', component: LoginComponent},
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     {path: 'studycreater', component: StudyCreaterComponent},
     {path: 'studylisting/:id', component: StudyListingComponent},
     {path: 'studylistingedit/:id', component: StudyListingEditComponent},
+    {path: 'invite/:id', component: InviteComponent},
     // otherwise redirect to home
     {path: '**', redirectTo: ''}
 ];

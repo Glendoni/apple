@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthGuard } from './_guards';
 import { JwtInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService, DynamicformService } from './_services';
+import { AlertService, AuthenticationService, UserService, DynamicformService,FormService } from './_services';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { TestmateComponent } from './testmate/testmate.component';
@@ -26,6 +26,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudyListingComponent } from './study-listing/study-listing.component';
 import { StudyCreaterComponent } from './study-creater/study-creater.component';
 import { StudyListingEditComponent } from './study-listing-edit/study-listing-edit.component';
+import { StudyCreaterEditComponent } from './study-creater-edit/study-creater-edit.component';
+import { UsersComponent } from './users/users.component';
+import { AddStudyUsersComponent } from './add-study-users/add-study-users.component';
+import { InviteComponent } from './invite/invite.component';
 
 @NgModule({
     imports: [
@@ -51,6 +55,10 @@ import { StudyListingEditComponent } from './study-listing-edit/study-listing-ed
         StudyListingComponent,
         StudyCreaterComponent,
         StudyListingEditComponent,
+        StudyCreaterEditComponent,
+        UsersComponent,
+        AddStudyUsersComponent,
+        InviteComponent,
     ],
     providers: [
         AuthGuard,
@@ -58,6 +66,7 @@ import { StudyListingEditComponent } from './study-listing-edit/study-listing-ed
         UserService,
         AlertService,
         DynamicformService,
+        FormService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
