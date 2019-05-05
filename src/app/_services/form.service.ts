@@ -23,12 +23,21 @@ export class FormService {
     })
   };
 
-  getQuestionStreams(id: bigint) {
+  getQuestionStreams(id) {
     return this.http.get(this.url + '/api/questionstreams/'+id);
   }
 
   sendInviteToStudy(value: any) {
     return this.http.post(this.url + '/api/invite/', value);
   }
+
+saveFormForLater(value :any, formId){
+  return this.http.post(this.url + '/api/saveForLater/'+formId, value);
+
+}
+  getFormValues(formId){
+  return this.http.get(this.url + '/api/getFormValues/'+formId);
+
+}
 
 }

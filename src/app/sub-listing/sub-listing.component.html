@@ -1,0 +1,11 @@
+<p>Sub Listing Works</p>
+{{ siteDetails }}
+<p *ngFor="let field of fields">
+  <a  (click)="onSubListingEdit(field)"  routerLinkActive="active" >{{field.name }}</a>
+
+  <br>
+
+</p>
+<div *ngIf="subListingEdit">
+  <app-sub-category [siteDetails]="subListingEdit"  (close)="onClose($event)"></app-sub-category>
+</div>

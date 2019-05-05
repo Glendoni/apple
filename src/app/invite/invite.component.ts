@@ -23,7 +23,9 @@ export class InviteComponent implements OnInit {
     this.service.inviteConfigurator(this.subscribedParam).subscribe( data => {
 
 if(data){
-  this.router.navigate(['/login']);
+
+  //console.log(data[0].redirect)
+ this.router.navigate(['/'+data[0].redirect]);
   console.log('go go go');
 }else{
 

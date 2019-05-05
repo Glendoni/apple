@@ -1,9 +1,4 @@
-<p>
-  form works!
-</p>
-{{  siteDetails | json }}
-<h1>COMPARISON FORM - {{ siteDetails.name  }}</h1>
-<p>{{  siteDetails.description }}</p>
+
 <hr/>
 <div>
 
@@ -12,9 +7,8 @@
 </div>
 <div class="col-sm-12">
   <div class="card">
-    <div class="card-header">Dynamic Forms</div>
     <div class="card-body">
-      <dynamic-form-builder *ngIf="fields" [fields]="fields" (onSubmit)="parentSubmit($event)"></dynamic-form-builder>
+      <dynamic-form-builder *ngIf="fields" [fields]="fields" [fieldvalue]="fieldvalues" (onSubmit)="parentSubmit($event)" (onSubmit)="parentSubmit($event)"></dynamic-form-builder>
     </div>
   </div>
 </div>

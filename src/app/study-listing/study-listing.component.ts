@@ -22,6 +22,7 @@ export class StudyListingComponent implements OnInit {
     showListingEditer = false;
     showListingCreate = false;
     studyId;
+    addField  =  false;
 
     constructor(private service: DynamicformService) {
         this.form = new FormGroup({
@@ -57,9 +58,11 @@ export class StudyListingComponent implements OnInit {
     onShowListingEdit(value): void {
         this.showListingEditer = true;
         this.showListingEdit = value;
+        this.addField = true;
     }
 
     onCancel() {
         this.close.emit(null);
+        this.addField = false;
     }
 }

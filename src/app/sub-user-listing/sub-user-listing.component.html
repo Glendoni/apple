@@ -1,0 +1,14 @@
+<p>
+  sub-user-listing works!
+</p>
+
+<div *ngIf="!sub_user">
+<p *ngFor="let field of fields">
+  <a  (click)="onSubListingEdit(field)"  routerLinkActive="active" >{{field.name }}</a>
+
+  <br>
+</p>
+</div>
+<div *ngIf="sub_user">
+  <app-sub-users [siteDetails]="sub_user"  (close)="onClose($event)"></app-sub-users>
+</div>

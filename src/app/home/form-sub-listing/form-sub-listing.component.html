@@ -1,0 +1,15 @@
+<h2>
+  Category: {{ siteDetails.name }}
+</h2>
+<h3>{{ siteDetails.description}}<br>{{ created_at }}</h3>
+<p *ngFor="let field of fields">
+  <a  (click)="onItemQuestions(field)"  routerLinkActive="active" >{{field.name }}</a>
+
+  <br>
+
+</p>
+
+
+<div *ngIf="itemQuestions">
+  <app-form [siteDetails]="itemQuestions"  (close)="onClose($event)"></app-form>
+</div>

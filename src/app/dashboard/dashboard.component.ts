@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit {
     editStudy = false;
     users = false;
     invite = false;
-    constructor(private service: DynamicformService) {}
+    studyItemsAndParticipants = false;
+    subListing = false;
+
+    constructor(private service: DynamicformService) {
+    }
 
     ngOnInit() {
         this.service.getStudies().subscribe((data) => {
@@ -33,16 +37,26 @@ export class DashboardComponent implements OnInit {
         this.createStudy = true;
     }
 
-    onEditStudy(value){
-console.log(value[0])
+    onEditStudy(value) {
         this.editStudy = value[0];
         this.moduleSwitcher = true;
     }
 
-    onUsers(value){
-console.log(value[0])
+    onSubListings(value) {
+        this.subListing = value[0];
+        this.moduleSwitcher = true;
+    }
+
+    onUsers(value) {
         this.users = true;
-this.invite = value[0];
+        this.invite = value[0];
+        this.moduleSwitcher = true;
+    }
+    onStudyItemsAndParticipants(value) {
+
+
+          this.studyItemsAndParticipants = value[0];
+
         this.moduleSwitcher = true;
     }
 
@@ -50,6 +64,7 @@ this.invite = value[0];
         this.users = false;
         this.createStudy = false;
         this.editStudy = false;
+        this.subListing = false;
         this.moduleSwitcher = false;
     }
 }

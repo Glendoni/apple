@@ -1,0 +1,23 @@
+<p>
+  sub-users works!
+</p>
+{{ siteDetails | json}}
+<h2>{{ siteDetails.name}}</h2>
+<p><i>Click on the checkbox to <strong>exclude</strong> user from this group</i></p>
+<form [formGroup]="form">
+  <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; ">
+    <div [formGroupName]="i">
+
+
+
+      <input type="checkbox" placeholder="option value" formControlName="value" ng-model="option[$index].value">
+      <input  type="hidden" placeholder="option value" formControlName="study_items_id" ng-model="option[$index].value">
+ <input  type="hidden" placeholder="option value" formControlName="study_id" ng-model="option[$index].value">
+ <input  type="hidden" placeholder="option value" formControlName="user_id" ng-model="option[$index].value">
+      <label for="name">{{ option.name}}</label>
+    </div>
+
+  </div>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+{{ form.value | json}}

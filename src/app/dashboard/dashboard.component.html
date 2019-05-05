@@ -1,13 +1,8 @@
-<p>
-    dashboard works!
-</p>
-
-
 <div *ngIf="!moduleSwitcher">
     <p><a (click)="onCreateStudy()">Create New Study</a></p>
     {{ fields | json }}
-   <p *ngFor="let field of fields"><a  (click)="onModuleSwitcher(filed)"
-       routerLinkActive="active">{{field.name }}</a> | <a (click)="onEditStudy([field.id])">Edit</a> | <a (click)="onUsers([field.id])">Users</a>
+   <p *ngFor="let field of fields"><a  (click)="onModuleSwitcher(field)"
+       routerLinkActive="active" >{{field.name }}</a> | <a (click)="onEditStudy([field.id])">Edit</a> | <a (click)="onUsers([field.id])">User Invite</a> | <a (click)="onStudyItemsAndParticipants([field.id])">Study Items and Participants</a> | <a (click)="onSubListings([field.id])">Study Listings</a>
        <br>{{ field.description }}
 
       </p>
@@ -22,6 +17,15 @@
     <app-study-creater-edit [siteDetails]="editStudy"  (close)="onClose($event)"></app-study-creater-edit>
 </div>
 
+<div *ngIf="studyItemsAndParticipants">
+    <app-sub-user-listing [siteDetails]="studyItemsAndParticipants"  (close)="onClose($event)"></app-sub-user-listing>
+</div>
+
+<div *ngIf="subListing">
+    <app-sub-listing [siteDetails]="subListing"  (close)="onClose($event)"></app-sub-listing>
+</div>
+
+
 
 <div *ngIf="users">
     <app-users [siteDetails]="invite"  (close)="onClose($event)"></app-users>
@@ -29,10 +33,7 @@
 
 
 <div *ngIf="moduleSwitcher">
-
             <app-study-listing [siteDetails]="moduleSwitcher" (close)="onClose($event)"></app-study-listing>
-
-
     </div>
 
 

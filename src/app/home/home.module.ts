@@ -4,6 +4,7 @@ import {HomeRoutingModule} from './home/home-routing.module';
 import {HomeComponent} from './home/home.component';
 import { FormComponent } from './form/form.component';
 import {DynamicFormBuilderModule} from "../dynamic-form-builder/dynamic-form-builder.module";
+import { FormSubListingComponent } from './form-sub-listing/form-sub-listing.component';
 
 
 
@@ -13,7 +14,7 @@ import {DynamicFormBuilderModule} from "../dynamic-form-builder/dynamic-form-bui
         HomeRoutingModule,
         DynamicFormBuilderModule,
     ],
-    declarations: [HomeComponent, FormComponent]
+    declarations: [HomeComponent, FormComponent, FormSubListingComponent]
 })
 export class HomeModule {
 }

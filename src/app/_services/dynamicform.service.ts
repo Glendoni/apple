@@ -44,7 +44,7 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
     getStudies() {
         return this.http.get(this.url + '/api/studies/');
     }
-    getStudy(id: bigint) {
+    getStudy(id) {
         return this.http.get(this.url + '/api/studies/'+ id);
     }
 
@@ -66,6 +66,23 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
     inviteConfigurator(study) {
         return this.http.get(this.url + '/api/linkChecker/'+ study);
     }
+    addStudyItem(value :any, formId){
+        return this.http.post(this.url + '/api/addStudyItem/'+formId, value);
+    }
+
+    studyItemListing(formId){
+        return this.http.get(this.url + '/api/studyItemListing/'+formId);
+    }
+    study_users(studyId,formId ){
+        return this.http.get(this.url + '/api/study_users/'+studyId+'/'+formId);
+    }
+    study_item_access(formId){
+        return this.http.post(this.url + '/api/study_item_access/',formId);
+    }
+    study_users_form_populators(formId){
+        return this.http.get(this.url + '/api/study_users_form_populators/'+formId);
+    }
+
 
     onUpload(e) {
         console.log(e);

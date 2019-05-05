@@ -2,13 +2,13 @@
 {{ siteDetails | json }}
 
 <div>
-  <div (click)="onCancel()">Cancel</div>
+
 
 </div>
 
 <div *ngIf="!showListingEdit">
 
-  <button  (click)="onCreateNewField()" >Add Field</button>
+  <button  (click)="onCreateNewField()" >Add New Field</button>
   <div *ngIf="showListingCreate">
     <app-form-menu  [studyId]="studyId" ></app-form-menu>
 
@@ -23,6 +23,7 @@
       Edit
     </a>
   </div>
+
 </div>
 <div *ngIf="!fields">
   <p>I  have nothing</p>

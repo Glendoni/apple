@@ -30,6 +30,10 @@ import { StudyCreaterEditComponent } from './study-creater-edit/study-creater-ed
 import { UsersComponent } from './users/users.component';
 import { AddStudyUsersComponent } from './add-study-users/add-study-users.component';
 import { InviteComponent } from './invite/invite.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { SubListingComponent } from './sub-listing/sub-listing.component';
+import { SubUserListingComponent } from './sub-user-listing/sub-user-listing.component';
+import { SubUsersComponent } from './sub-users/sub-users.component';
 
 @NgModule({
     imports: [
@@ -59,6 +63,10 @@ import { InviteComponent } from './invite/invite.component';
         UsersComponent,
         AddStudyUsersComponent,
         InviteComponent,
+        SubCategoryComponent,
+        SubListingComponent,
+        SubUserListingComponent,
+        SubUsersComponent,
     ],
     providers: [
         AuthGuard,

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
-import {FormService} from "../_services";
+import {DynamicformService, FormService} from "../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -14,10 +14,11 @@ export class UsersComponent implements OnInit {
     form: FormGroup;
     placeholder = 'enter email';
     submitted = false;
+    fields;
     @Input() siteDetails;
     @Output() close: EventEmitter<any> = new EventEmitter();
 
-    constructor(private fb: FormBuilder, private service: FormService, private route: ActivatedRoute, private router: Router) {
+    constructor(private fb: FormBuilder,private dynamic: DynamicformService, private service: FormService, private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -27,6 +28,9 @@ export class UsersComponent implements OnInit {
             study_id: [this.siteDetails, Validators.required],
 
         });
+
+
+
     }
 
     // convenience getter for easy access to form fields
