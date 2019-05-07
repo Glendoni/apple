@@ -1,9 +1,8 @@
 <p>
-  [sub-category] Add new item works!
+  sub-listing-edit works!
 </p>
-
+{{ siteDetails | json}}
 <div (click)="onCancel()">Cancel</div>
-{{ siteDetails }}
 <form [formGroup]="form">
 
   <div class="form-group">
@@ -37,5 +36,3 @@
   <button (click)="onSubmit()">Submit</button>
 </form>
 {{ form.value | json}}
-
-

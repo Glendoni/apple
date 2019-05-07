@@ -45,6 +45,10 @@ export class DynamicFormBuilderComponent implements OnInit {
         fieldsCtrls[f.name] = new FormGroup(opts)
       }
     }
+
+
+
+
     this.form = new FormGroup(fieldsCtrls);
 
     this.service.getFormValues(this.fieldvalue).subscribe((data) => {

@@ -66,8 +66,14 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
     inviteConfigurator(study) {
         return this.http.get(this.url + '/api/linkChecker/'+ study);
     }
-    addStudyItem(value :any, formId){
-        return this.http.post(this.url + '/api/addStudyItem/'+formId, value);
+    addStudyItem(value :any, formId :number){
+        return this.http.post(this.url + '/api/addStudyItem/'+formId,value);
+    }
+    getStudyItem(formId){
+        return this.http.get(this.url + '/api/getStudyItem/'+formId);
+    }
+    studyItemUpdate(formId, value :number){
+        return this.http.post(this.url + '/api/studyItemUpdate/'+formId, value);
     }
 
     studyItemListing(formId){

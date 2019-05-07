@@ -53,7 +53,7 @@ export class SubUsersComponent implements OnInit {
         const item_id = this.siteDetails.id;
         const val = this.fb.group({
             user_id:[value.id],
-            value: [value.value],
+            value: [value.value,Validators.required],
             study_items_id: [item_id],
             study_id: [value.study_id],
             name: [value.name]

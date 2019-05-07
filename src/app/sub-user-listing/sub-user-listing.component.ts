@@ -21,7 +21,7 @@ export class SubUserListingComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.getDetails);
+
     this.service.studyItemListing(this.siteDetails).subscribe(data => {
       this.fields = data;
 

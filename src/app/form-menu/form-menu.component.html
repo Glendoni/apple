@@ -19,7 +19,7 @@
             <app-field-checkbox [selectedFieldType]="selectedFieldType"></app-field-checkbox>
         </ng-template>
         <ng-template [ngSwitchCase]="'Radio'">
-            <app-field-radio [selectedFieldType]="selectedFieldType"></app-field-radio>
+            <app-field-radio [selectedFieldType]="selectedFieldType" [studyId]="studyId"></app-field-radio>
         </ng-template>
         <ng-template [ngSwitchCase]="'Textbox'">
             <app-field-textbox [selectedFieldType]="selectedFieldType"></app-field-textbox>

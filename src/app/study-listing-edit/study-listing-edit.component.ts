@@ -29,7 +29,6 @@ export class StudyListingEditComponent implements OnInit {
     ngOnInit() {
         this.form = this.fb.group({
             options: this.fb.array([]),
-
             name: ['', Validators.required],
             label: ['', Validators.required],
             type: ['', Validators.required],

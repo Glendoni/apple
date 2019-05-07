@@ -1,15 +1,14 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
-import {AuthenticationService, DynamicformService} from '../_services';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthenticationService, DynamicformService} from "../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-sub-category',
-  templateUrl: './sub-category.component.html',
-  styleUrls: ['./sub-category.component.css']
+  selector: 'app-sub-listing-edit',
+  templateUrl: './sub-listing-edit.component.html',
+  styleUrls: ['./sub-listing-edit.component.css']
 })
-export class SubCategoryComponent implements OnInit {
+export class SubListingEditComponent implements OnInit {
   @Input() siteDetails;
   @Output() close: EventEmitter<any> = new EventEmitter();
   form: FormGroup;
@@ -27,9 +26,14 @@ export class SubCategoryComponent implements OnInit {
       study_id: [this.siteDetails, Validators.required],
 
     });
-    
-    
-    
+console.log(this.siteDetails);
+    this.service.getStudyItem(this.siteDetails.id).subscribe(data => {
+console.log(data);
+      this.f.name.setValue(data[0].name);
+      this.f.note.setValue(data[0].note);
+      this.f.study_id.setValue(data[0].study_id);
+    })
+
   }
 
   get f() {
@@ -38,10 +42,12 @@ export class SubCategoryComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
+    console.log(this.siteDetails.id);
     console.log('value: ', this.form.value);
     console.log('valid: ', this.form.valid);
     console.log('value: ', this.form.value);
-    this.service.addStudyItem(this.form.value, this.siteDetails).subscribe(data => {
+    this.service.studyItemUpdate(this.siteDetails.id,this.form.value).subscribe(data => {
       console.log(data);
     });
 

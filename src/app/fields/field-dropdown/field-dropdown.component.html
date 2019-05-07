@@ -1,4 +1,4 @@
-<h2>Add New {{ Field  }}</h2>
+<h2>Add New {{ Field }}</h2>
 
 
 {{ studyId}}
@@ -36,14 +36,10 @@
             <div *ngIf="f.value.errors.required">Filed value is required</div>
         </div>
     </div>
-
-
-
-
-        <input type="hidden" formControlName="type" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.type.errors }"/>
-        <input type="hidden" formControlName="studyId" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.studyId.errors }"/>
+    <input type="hidden" formControlName="type" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.type.errors }"/>
+    <input type="hidden" formControlName="studyId" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.studyId.errors }"/>
 
 
     <br>

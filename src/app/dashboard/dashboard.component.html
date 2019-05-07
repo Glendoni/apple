@@ -1,9 +1,15 @@
 <div *ngIf="!moduleSwitcher">
     <p><a (click)="onCreateStudy()">Create New Study</a></p>
-    {{ fields | json }}
-   <p *ngFor="let field of fields"><a  (click)="onModuleSwitcher(field)"
-       routerLinkActive="active" >{{field.name }}</a> | <a (click)="onEditStudy([field.id])">Edit</a> | <a (click)="onUsers([field.id])">User Invite</a> | <a (click)="onStudyItemsAndParticipants([field.id])">Study Items and Participants</a> | <a (click)="onSubListings([field.id])">Study Listings</a>
-       <br>{{ field.description }}
+
+   <p *ngFor="let field of fields">
+       {{field.name }}
+       | <a  (click)="onModuleSwitcher(field)" routerLinkActive="active" >Study Questions</a>
+
+       | <a (click)="onUsers([field.id])">User Invite</a>
+       | <a (click)="onStudyItemsAndParticipants([field.id])">Study Items and Participants</a>
+       | <a (click)="onSubListings([field.id])">Study Sub  Items</a>
+       | <a (click)="onEditStudy([field.id])">Study Profile</a>
+       <br>
 
       </p>
 </div>

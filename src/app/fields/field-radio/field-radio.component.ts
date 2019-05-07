@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FiledType} from '../../fieldType';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import {AuthenticationService, DynamicformService} from '../../_services';
+import {first} from "rxjs/operators";
 @Component({
   selector: 'app-field-radio',
   templateUrl: './field-radio.component.html',
@@ -9,29 +10,34 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class FieldRadioComponent implements OnInit {
 
-
   @Input() selectedFieldType: FiledType;
+  @Input() studyId;
   form: FormGroup;
 
   loading = false;
   submitted = false;
-
+  Field;
 
   value = this.fb.group({
 
-    from: ['', Validators.required],
-    to: ['', Validators.required]
+    key: ['', Validators.required],
+    label: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service: DynamicformService) {
   }
 
   ngOnInit() {
     this.form = this.fb.group({
-      times: this.fb.array([]),
-      name: ['glendonsmall@yahoo.co.uk', Validators.required]
-
+      options: this.fb.array([]),
+      name: ['', Validators.required],
+      label: ['', Validators.required],
+      type: [this.selectedFieldType.id, Validators.required],
+      studyId: [this.studyId, Validators.required],
+      value: [''],
+      required: [false],
     });
+    this.Field = this.selectedFieldType.name;
   }
 
   // convenience getter for easy access to form fields
@@ -40,32 +46,50 @@ export class FieldRadioComponent implements OnInit {
   }
 
   getValidity(i) {
-    return (<FormArray>this.form.get('times')).controls[i].invalid;
+    return (<FormArray>this.form.get('options')).controls[i].invalid;
   }
 
   addGroup() {
     const val = this.fb.group({
-      to: ['', Validators.required],
-      from: ['', Validators.required]
+      key: ['', Validators.required],
+      label: ['', Validators.required]
     });
 
-    const form = this.form.get('times') as FormArray;
+    const form = this.form.get('options') as FormArray;
     form.push(val);
-
   }
 
   removeGroup(index) {
-    const form = this.form.get('times') as FormArray;
+    const form = this.form.get('options') as FormArray;
     form.removeAt(index);
   }
 
-  trackByFn(index: any, item: any) {
+  trackByFn(index: any, options: any) {
     return index;
   }
 
   onSubmit() {
     this.submitted = true;
+
+    const optionLength = this.form.value.options.length;
+    console.log('option: ', this.form.value.options.length);
     console.log('value: ', this.form.value);
     console.log('valid: ', this.form.valid);
+    if ((!optionLength) || this.form.valid === false) {
+      return;
+    }
+    this.service.createQuestion(this.form.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+              console.log(data);
+              //this.alertService.success('Registration successful', true);
+              // this.router.navigate(['/login']);
+            }
+        );
   }
+
+
+
+
 }

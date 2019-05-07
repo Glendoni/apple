@@ -1,14 +1,15 @@
+<p>Study Listing</p>
 
-{{ siteDetails | json }}
 
 <div>
 
+  <button  (click)="onCreateNewField()" >Add New Field</button>
 
 </div>
 
 <div *ngIf="!showListingEdit">
 
-  <button  (click)="onCreateNewField()" >Add New Field</button>
+
   <div *ngIf="showListingCreate">
     <app-form-menu  [studyId]="studyId" ></app-form-menu>
 

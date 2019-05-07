@@ -15,13 +15,15 @@ export class SubListingComponent implements OnInit {
     fields: any;
     studyQuestions;
     subListingEdit = false
+    addStudy =false;
+    subListing = true;
     constructor(private fb: FormBuilder, private service: DynamicformService, private route: ActivatedRoute,
                 private router: Router,
                 private authenticationService: AuthenticationService) {
     }
 
     ngOnInit() {
-        console.log(this.getDetails);
+
         this.service.studyItemListing(this.siteDetails).subscribe(data => {
             this.fields = data;
 
@@ -29,8 +31,23 @@ export class SubListingComponent implements OnInit {
     }
 
     onSubListingEdit(value){
+        console.log(value)
+        this.subListingEdit = value;
+        this.addStudy =false;
 
-        this.subListingEdit = this.siteDetails;
+        this.subListing = false;
+    }
+
+    onSubListing(){
+        this.subListing = true;
+        this.subListingEdit = false
+        this.addStudy =false;
+    }
+    onAddStudy(value){
+        console.log(value)
+        this.addStudy = this.siteDetails;
+        this.subListingEdit = false
+
 
     }
     onClose() {

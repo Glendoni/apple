@@ -34,6 +34,7 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { SubListingComponent } from './sub-listing/sub-listing.component';
 import { SubUserListingComponent } from './sub-user-listing/sub-user-listing.component';
 import { SubUsersComponent } from './sub-users/sub-users.component';
+import { SubListingEditComponent } from './sub-listing-edit/sub-listing-edit.component';
 
 @NgModule({
     imports: [
@@ -67,6 +68,7 @@ import { SubUsersComponent } from './sub-users/sub-users.component';
         SubListingComponent,
         SubUserListingComponent,
         SubUsersComponent,
+        SubListingEditComponent,
     ],
     providers: [
         AuthGuard,

@@ -13,7 +13,7 @@ export class FormComponent implements OnInit {
     //@Output() fld: EventEmitter<any> = new EventEmitter();
     public form: FormGroup;
     unsubcribe: any;
-    public fields =false;
+    public fields;
     public fieldvalues;
 
     constructor(private service: FormService) {

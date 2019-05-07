@@ -1,31 +1,67 @@
 <h2>Add New {{ selectedFieldType.name  }}</h2>
 
+<p>stydy  ID{{ selectedFieldType | json }}</p>
+
 <form [formGroup]="form">
 
   <div class="form-group">
-    <label for="name">Name</label>
+    <label for="name">Filed Name: </label>
     <input type="text" formControlName="name" class="form-control"
            [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">name is required</div>
+      <div *ngIf="f.name.errors.required">Filed name is required</div>
     </div>
   </div>
 
-  <h3>add and remove groups with validatioon to form dynamically <button (click)="addGroup()">Add</button></h3>
+  <div class="form-group">
+    <label for="label">Filed Label: </label>
+    <input type="text" formControlName="label" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.label.errors }"/>
+    <div *ngIf="submitted && f.label.errors" class="invalid-feedback">
+      <div *ngIf="f.label.errors.required">Filed label is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="value">Required: </label>
+    <input type="checkbox" formControlName="required" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.required.errors }"/>
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="value">Filed Default Value: </label>
+    <input type="text" formControlName="value" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.value.errors }"/>
+    <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
+      <div *ngIf="f.value.errors.required">Filed value is required</div>
+    </div>
+  </div>
+  <input type="hidden" formControlName="type" class="form-control"
+         [ngClass]="{ 'is-invalid': submitted && f.type.errors }"/>
+  <input type="hidden" formControlName="studyId" class="form-control"
+         [ngClass]="{ 'is-invalid': submitted && f.studyId.errors }"/>
 
-  <div formArrayName="times" *ngFor="let time of f.times?.value; let i = index; trackBy:trackByFn">
+
+  <br>
+
+  <br>
+
+  <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; ">
     <div [formGroupName]="i">
-      <input placeholder="from" formControlName="from">
-      <input placeholder="to" formControlName="to">
+      <input placeholder="option value" formControlName="key" ng-model="option[$index].value">
+      <input placeholder="option label" formControlName="label">
 
     </div>
-    <span (click)="removeGroup(i)">Remove this group</span>
+
     <div *ngIf="(getValidity(i))">This field must be filled out</div>
+    <span (click)="removeGroup(i)">Remove this group</span>
+    <br>
   </div>
+  <h3>add and remove groups with validation to form dynamically
+    <button (click)="addGroup()">Add</button>
+  </h3>
   <br>
 
   <br>
   <button (click)="onSubmit()">Submit</button>
 </form>
-{{ form.value | json}}
-{{ selectedFieldType | json}}
+<pre>{{ form.value | json}}</pre>
