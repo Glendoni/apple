@@ -1,9 +1,5 @@
-<p>
-  sub-users works!
-</p>
-{{ siteDetails | json}}
-<h2>{{ siteDetails.name}}</h2>
-<p><i>Click on the checkbox to <strong>exclude</strong> user from this group</i></p>
+<h5>Study Item: {{ siteDetails.name}}</h5>
+<p><i>Click on the checkbox to <strong>add</strong> users to this group</i></p>
 <form [formGroup]="form">
   <div formArrayName="options" *ngFor="let option of f.options?.value; let i = index; ">
     <div [formGroupName]="i">
@@ -20,4 +16,4 @@
   </div>
   <button (click)="onSubmit()">Submit</button>
 </form>
-{{ form.value | json}}
+

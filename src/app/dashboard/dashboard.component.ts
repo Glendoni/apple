@@ -11,13 +11,14 @@ export class DashboardComponent implements OnInit {
 
     public fields;
     selectedFieldType = false;
-    moduleSwitcher = false;
+    moduleSwitcher = true;
     createStudy = false;
     editStudy = false;
     users = false;
-    invite = false;
+    inviteStudyUsers = false;
     studyItemsAndParticipants = false;
     subListing = false;
+    studyQuestions = false;
 
     constructor(private service: DynamicformService) {
     }
@@ -32,39 +33,46 @@ export class DashboardComponent implements OnInit {
         this.moduleSwitcher = value;
     }
 
+    onStudyQuestions(value): void {
+        this.moduleSwitcher = false;
+        this.studyQuestions = value;
+    }
+
     onCreateStudy(): void {
-        this.moduleSwitcher = true;
+        this.moduleSwitcher = false;
         this.createStudy = true;
     }
 
     onEditStudy(value) {
         this.editStudy = value[0];
-        this.moduleSwitcher = true;
+        this.moduleSwitcher = false;
     }
 
     onSubListings(value) {
         this.subListing = value[0];
-        this.moduleSwitcher = true;
+        this.moduleSwitcher = false;
     }
 
-    onUsers(value) {
-        this.users = true;
-        this.invite = value[0];
-        this.moduleSwitcher = true;
+    onInviteStudyUsers(value) {
+
+        this.inviteStudyUsers = value[0];
+        this.moduleSwitcher = false;
     }
     onStudyItemsAndParticipants(value) {
 
 
           this.studyItemsAndParticipants = value[0];
 
-        this.moduleSwitcher = true;
+        this.moduleSwitcher = false;
     }
 
     onClose(event: Event): void {
-        this.users = false;
+        this.inviteStudyUsers = false;
         this.createStudy = false;
         this.editStudy = false;
         this.subListing = false;
-        this.moduleSwitcher = false;
+        this.moduleSwitcher = true;
+        this.studyQuestions = false;
+        this.studyItemsAndParticipants = false;
     }
 }

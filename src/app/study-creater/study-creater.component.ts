@@ -26,6 +26,8 @@ export class StudyCreaterComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       invite_code: ['', Validators.required],
+      start_date: ['', Validators.required],
+      end_date: [''],
 
     });
   }

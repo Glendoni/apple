@@ -1,0 +1,26 @@
+<div (click)="onCancel()">Cancel</div>
+<h2>Invite New Participant To Join Study ~ {{ siteDetails.name }}</h2>
+<h5>{{ siteDetails.description}}</h5>
+
+
+
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label for="name">Send Invite: </label>
+    <input type="text" formControlName="invitee_email" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.invitee_email.errors }"/>
+    <div *ngIf="submitted && f.invitee_email.errors" class="invalid-feedback">
+      <div *ngIf="f.invitee_email.errors.required">Valid email is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="hidden" formControlName="study_id" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.study_id.errors }"/>
+  </div>
+  <br>
+  <br>
+  <button (click)="onSubmit()">Submit</button>
+
+</form>
+

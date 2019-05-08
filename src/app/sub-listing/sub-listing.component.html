@@ -1,17 +1,15 @@
-<p>STUDIES LISTINGS</p>
-
-
-
- | <a  (click)="onAddStudy(fields)"  routerLinkActive="active" >Add Study</a>
-| <a  (click)="onSubListing(fields)"  routerLinkActive="active" >Edit Study</a>
+<p>STUDIES SUB LISTING</p>
+<a  (click)="onAddStudy(fields)"  routerLinkActive="active" >Add New Study Item</a>
+| <a  (click)="onSubListing(fields)"  routerLinkActive="active" >Studies</a>
 
 <div *ngIf="addStudy">
+    <div (click)="onSubListing(fields)">Cancel</div>
   <app-sub-category [siteDetails]="addStudy"  (close)="onClose($event)"></app-sub-category>
 </div>
 
 
 <div *ngIf="subListing">
-
+    <div (click)="onClose()">Cancel</div>
   <p *ngFor="let field of fields" (click)="onSubListingEdit(field)" >
      <a  (click)="onSubListingEdit(field)"  >{{field.name }}</a>
 
@@ -22,7 +20,7 @@
 
 
 <div *ngIf="subListingEdit">
-
+    <div (click)="onSubListing(fields)">Cancel</div>
    <app-sub-listing-edit [siteDetails]="subListingEdit"  (close)="onClose($event)"></app-sub-listing-edit>
  </div>
 

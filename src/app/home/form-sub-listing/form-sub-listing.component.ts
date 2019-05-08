@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {AuthenticationService, DynamicformService} from "../../_services";
+import {AuthenticationService, FormService} from "../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -14,8 +14,11 @@ export class FormSubListingComponent implements OnInit {
   @Output() close: EventEmitter<any> = new EventEmitter();
   fields: any;
   itemQuestions = false;
-  subListingEdit = false
-  constructor(private fb: FormBuilder, private service: DynamicformService, private route: ActivatedRoute,
+  subListingEdit = false;
+  studyItem = false;
+  fieldlist = true;
+  studyItemListingDataLength = true;
+  constructor(private fb: FormBuilder, private service: FormService, private route: ActivatedRoute,
               private router: Router,
               private authenticationService: AuthenticationService) {
   }
@@ -25,12 +28,24 @@ export class FormSubListingComponent implements OnInit {
     this.service.studyItemListing(this.siteDetails.id).subscribe(data => {
       this.fields = data;
 
+      this.showhideMessage(data);
+
     });
   }
 
-  onItemQuestions(value){
+  showhideMessage(value){
 
+
+if(!value.length) {
+  this.studyItemListingDataLength = false;
+
+}
+  }
+
+  onItemQuestions(value){
+    this.studyItem = value.name
     this.itemQuestions = this.siteDetails;
+    this.fieldlist = false;
   }
   onClose() {
     this.close.emit(null);

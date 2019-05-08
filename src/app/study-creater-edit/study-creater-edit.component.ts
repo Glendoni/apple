@@ -26,14 +26,18 @@ export class StudyCreaterEditComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       invite_code: ['', Validators.required],
-      studyId: [this.siteDetails, Validators.required],
+      studyId: [this.siteDetails.id, Validators.required],
+      start_date: [''],
+      end_date: [''],
     });
 
-    this.service.getStudy(this.siteDetails).subscribe(data => {
+    this.service.getStudy(this.siteDetails.id).subscribe(data => {
 
       this.f.name.setValue(data.name);
       this.f.description.setValue(data.description);
       this.f.invite_code.setValue(data.invite_code);
+      this.f.start_date.setValue(data.start_date);
+      this.f.end_date.setValue(data.end_date);
     })
 
   }
@@ -51,7 +55,6 @@ export class StudyCreaterEditComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-              console.log(data);
               //this.alertService.success('Registration successful', true);
               // this.router.navigate(['/login']);
               this.router.navigate(['/dashboard']);

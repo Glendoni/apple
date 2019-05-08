@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import {FiledType} from '../fieldType';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
@@ -12,6 +12,7 @@ import {DynamicformService} from '../_services';
 })
 export class StudyListingEditComponent implements OnInit {
     @Input() siteDetails;
+    @Output() close: EventEmitter<any> = new EventEmitter();
     form: FormGroup;
     loading = false;
     submitted = false;
@@ -122,5 +123,17 @@ export class StudyListingEditComponent implements OnInit {
                 data => {
                 }
             );
+    }
+
+    onCancel() {
+        this.close.emit(null);
+        this.addField = false;
+        this.createNewField = false;
+    }
+    onClose() {
+
+        this.addField = true;
+        this.createNewField = true;
+        this.showListingEditer = false;
     }
 }

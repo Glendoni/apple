@@ -33,7 +33,7 @@ export class SubUsersComponent implements OnInit {
             //console.log(this.fieldvalues);
             for (var key in p) {
                 if (p.hasOwnProperty(key)) {
-                    console.log(p[key].name);
+                    //console.log(p[key].name);
                     //this.form.controls[''+key+''].setValue(p[key]);
                     this.addGroup(p[key]);
                 }

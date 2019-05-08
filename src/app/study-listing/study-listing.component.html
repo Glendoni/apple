@@ -1,40 +1,36 @@
-<p>Study Listing</p>
 
+<h2>Questions for Study ~ {{ siteDetails.name}}</h2>
+<div *ngIf="createNewField">
 
-<div>
-
-  <button  (click)="onCreateNewField()" >Add New Field</button>
-
+    <button (click)="onCreateNewField()">Addr - New Field</button>
+    <div (click)="onCancel()">Cancel</div>
 </div>
 
 <div *ngIf="!showListingEdit">
+    <div *ngIf="showListingCreate">
+        <p>Study Listing</p>
+        <app-form-menu [studyId]="studyId"></app-form-menu>
+    </div>
 
-
-  <div *ngIf="showListingCreate">
-    <app-form-menu  [studyId]="studyId" ></app-form-menu>
-
-  </div>
-
-  <div *ngFor="let field of fields">
-    <p> Type: {{ field.type }} <br> Question: {{ field.label }} {{ field.question_uniqid }}</p>
-    <ul>
-      <option *ngFor="let option of field.options">{{ option.label }} {{option.key == field.value ? 'default' : '' }} </option>
-    </ul>
-    <a  (click)="onShowListingEdit(field.question_uniqid)" >
-      Edit
-    </a>
-  </div>
-
+    <div *ngFor="let field of fields">
+        <p> Type: {{ field.type }} <br> Question: {{ field.label }}</p>
+        <ul>
+            <option *ngFor="let option of field.options">{{ option.label }} {{option.key == field.value ? 'default' : ''
+                }}
+            </option>
+        </ul>
+        <a (click)="onShowListingEdit(field.question_uniqid)">
+            Edit
+        </a>
+    </div>
 </div>
 <div *ngIf="!fields">
-  <p>I  have nothing</p>
+    <p>Loading...</p>
 </div>
 
-
-
-
-<div *ngIf="showListingEditer">
-  <app-study-listing-edit   [siteDetails]="showListingEdit" ></app-study-listing-edit>
+<div *ngIf="showListingEditor">
+    <div (click)="onCancel()">Cancel</div>
+    <app-study-listing-edit [siteDetails]="showListingEdit" (close)="onClose($event)"></app-study-listing-edit>
 
 </div>
 

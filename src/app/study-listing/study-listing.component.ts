@@ -10,7 +10,6 @@ import {first} from 'rxjs/operators';
     styleUrls: ['./study-listing.component.css']
 })
 export class StudyListingComponent implements OnInit {
-
     @Output() close: EventEmitter<any> = new EventEmitter();
     public form: FormGroup;
     unsubcribe: any;
@@ -19,9 +18,10 @@ export class StudyListingComponent implements OnInit {
 
     public fields;
     showListingEdit = false;
-    showListingEditer = false;
+    showListingEditor = false;
     showListingCreate = false;
     studyId;
+    createNewField =true
     addField  =  false;
 
     constructor(private service: DynamicformService) {
@@ -48,7 +48,7 @@ export class StudyListingComponent implements OnInit {
 
     onCreateNewField() {
         this.showListingCreate = true;
-        this.studyId = this.siteDetails.id;
+        this.studyId = this.siteDetails;
     }
 
     onUpload(e): void {
@@ -56,7 +56,9 @@ export class StudyListingComponent implements OnInit {
     }
 
     onShowListingEdit(value): void {
-        this.showListingEditer = true;
+        this.showListingEditor = value;
+        this.createNewField = false;
+console.log(value)
         this.showListingEdit = value;
         this.addField = true;
     }
@@ -64,5 +66,12 @@ export class StudyListingComponent implements OnInit {
     onCancel() {
         this.close.emit(null);
         this.addField = false;
+        this.createNewField = false;
+    }
+    onClose() {
+
+        this.close.emit(null);
+        this.createNewField = true;
+        this.showListingEditor = false;
     }
 }

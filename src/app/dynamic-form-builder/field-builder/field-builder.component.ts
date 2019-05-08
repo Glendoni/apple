@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
       <strong class="text-danger" *ngIf="field.required">*</strong>
     </label>
     <div class="col-md-9" [ngSwitch]="field.type">
-      <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>
+      <textbox *ngSwitchCase="'textbox'" [field]="field" [form]="form"></textbox>
       <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form"></dropdown>
       <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>
       <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></radio>

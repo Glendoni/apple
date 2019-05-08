@@ -89,6 +89,11 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
         return this.http.get(this.url + '/api/study_users_form_populators/'+formId);
     }
 
+    getFormUser(){
+
+        return this.http.get(this.url + '/api/getFormUser');
+
+    }
 
     onUpload(e) {
         console.log(e);

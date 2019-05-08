@@ -1,8 +1,9 @@
-<p>
-  sub-user-listing works!
-</p>
+<div (click)="onClose()">Cancel</div>
 
+
+<h2>Study ~ {{ siteDetails.name }}</h2>
 <div *ngIf="!sub_user">
+<h5>Click on below study item to view and manage participant's </h5>
 <p *ngFor="let field of fields">
   <a  (click)="onSubListingEdit(field)"  routerLinkActive="active" >{{field.name }}</a>
 

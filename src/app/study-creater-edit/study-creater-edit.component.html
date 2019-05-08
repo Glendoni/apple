@@ -1,9 +1,8 @@
-<h1>Site Creater Edit</h1>
+<h2>Edit Profile of Study ~ {{ siteDetails.name }}  </h2>
 
-<div>
-  <div (click)="onCancel()">Cancel</div>
 
-</div>
+<div> <p (click)="onCancel()">Cancel</p></div>
+
 
 
 <form [formGroup]="form">
@@ -19,10 +18,10 @@
 
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" formControlName="description" class="form-control" placeholder="{{ placeholder }}"
-           [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
+    <textarea formControlName="description" class="form-control" placeholder="{{ placeholder }}"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"></textarea>
     <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-      <div *ngIf="f.description.errors.required">name is required</div>
+      <div *ngIf="f.description.errors.required">description is required</div>
     </div>
   </div>
   <div class="form-group">
@@ -33,6 +32,22 @@
       <div *ngIf="f.invite_code.errors.required">name is required</div>
     </div>
   </div>
+  <div class="form-group">
+    <label for="start_date">Start Date</label>
+    <input type="date" formControlName="start_date" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.start_date.errors }"/>
+    <div *ngIf="submitted && f.start_date.errors" class="invalid-feedback">
+      <div *ngIf="f.start_date.errors.required">Invite Code is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="end_date">End Date</label>
+    <input type="date" formControlName="end_date" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.end_date.errors }"/>
+    <div *ngIf="submitted && f.end_date.errors" class="invalid-feedback">
+      <div *ngIf="f.end_date.errors.required">Invite Code is required</div>
+    </div>
+  </div>
   <br>
   <div class="form-group">
   <input type="hidden" formControlName="studyId" class="form-control"
@@ -41,4 +56,4 @@
   <br>
   <button (click)="onSubmit()">Submit</button>
 </form>
-{{ form.value | json}}
+

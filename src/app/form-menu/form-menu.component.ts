@@ -16,9 +16,13 @@ export class FormMenuComponent implements OnInit {
   selectedFieldType: FiledType;
 
 
-  constructor() { }
+  constructor() {
+
+
+  }
 
   ngOnInit() {
+    console.log(this.studyId)
   }
 
   onSelect(filedTypeMenu: FiledType): void {

@@ -1,15 +1,11 @@
+<p>Hi {{logged_in_user}}</p>
+    <nav>
+        <a (click)="onModuleSwitcher(false)">Home</a>
 
-<nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-
-</nav>
-
-<div *ngIf="!moduleSwitcher">
-
-   <p *ngFor="let filed of fields"> <a  (click)="onModuleSwitcher(filed)"
-       routerLinkActive="active">{{filed.name }}</a> </p>
-
-</div>
+    </nav>
+    <div *ngIf="!moduleSwitcher">
+    <p *ngFor="let filed of fields"><a (click)="onModuleSwitcher(filed)" routerLinkActive="active">{{filed.name }}</a></p>
+    </div>
 
 <div *ngIf="moduleSwitcher">
 

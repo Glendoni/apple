@@ -1,16 +1,15 @@
-<div *ngIf="!moduleSwitcher">
+<div *ngIf="moduleSwitcher">
     <p><a (click)="onCreateStudy()">Create New Study</a></p>
 
    <p *ngFor="let field of fields">
-       {{field.name }}
-       | <a  (click)="onModuleSwitcher(field)" routerLinkActive="active" >Study Questions</a>
 
-       | <a (click)="onUsers([field.id])">User Invite</a>
-       | <a (click)="onStudyItemsAndParticipants([field.id])">Study Items and Participants</a>
-       | <a (click)="onSubListings([field.id])">Study Sub  Items</a>
-       | <a (click)="onEditStudy([field.id])">Study Profile</a>
+       <a (click)="onEditStudy([field])"> {{field.name }}</a>
+       | <a  (click)="onStudyQuestions(field)" routerLinkActive="active" >Study Questions</a>
+       | <a (click)="onSubListings([field.id])">Study Groups</a>
+       | <a (click)="onInviteStudyUsers([field])">Invite Participants</a>
+       | <a (click)="onStudyItemsAndParticipants([field])">Participants</a>
+
        <br>
-
       </p>
 </div>
 
@@ -33,13 +32,13 @@
 
 
 
-<div *ngIf="users">
-    <app-users [siteDetails]="invite"  (close)="onClose($event)"></app-users>
+<div *ngIf="inviteStudyUsers">
+    <app-invite-study-users [siteDetails]="inviteStudyUsers"  (close)="onClose($event)"></app-invite-study-users>
 </div>
 
 
-<div *ngIf="moduleSwitcher">
-            <app-study-listing [siteDetails]="moduleSwitcher" (close)="onClose($event)"></app-study-listing>
+<div *ngIf="studyQuestions">
+            <app-study-listing [siteDetails]="studyQuestions" (close)="onClose($event)"></app-study-listing>
     </div>
 
 

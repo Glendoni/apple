@@ -17,7 +17,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 import { FormMenuComponent } from './form-menu/form-menu.component';
-//import { FieldTextComponent } from './fields/field-text/field-text.component';
+import { FieldTextComponent } from './fields/field-text/field-text.component';
 import { FieldCheckboxComponent } from './fields/field-checkbox/field-checkbox.component';
 import { FieldRadioComponent } from './fields/field-radio/field-radio.component';
 import { FieldTextboxComponent } from './fields/field-textbox/field-textbox.component';
@@ -35,6 +35,7 @@ import { SubListingComponent } from './sub-listing/sub-listing.component';
 import { SubUserListingComponent } from './sub-user-listing/sub-user-listing.component';
 import { SubUsersComponent } from './sub-users/sub-users.component';
 import { SubListingEditComponent } from './sub-listing-edit/sub-listing-edit.component';
+import { InviteStudyUsersComponent } from './invite-study-users/invite-study-users.component';
 
 @NgModule({
     imports: [
@@ -56,6 +57,7 @@ import { SubListingEditComponent } from './sub-listing-edit/sub-listing-edit.com
         FieldRadioComponent,
         FieldTextboxComponent,
         FieldDropdownComponent,
+        FieldTextComponent,
         DashboardComponent,
         StudyListingComponent,
         StudyCreaterComponent,
@@ -69,6 +71,7 @@ import { SubListingEditComponent } from './sub-listing-edit/sub-listing-edit.com
         SubUserListingComponent,
         SubUsersComponent,
         SubListingEditComponent,
+        InviteStudyUsersComponent,
     ],
     providers: [
         AuthGuard,

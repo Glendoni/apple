@@ -53,4 +53,5 @@ export class SubListingComponent implements OnInit {
     onClose() {
         this.close.emit(null);
     }
+
 }

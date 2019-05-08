@@ -1,27 +1,3 @@
 <h2>User Works</h2>
 <p>
-  {{siteDetails |json}}
-</p>
-<!--<button (click)="onSendInvite()">Send Invite</button>-->
 
-
-<form [formGroup]="form">
-
-  <div class="form-group">
-    <label for="name">Send Invite</label>
-    <input type="text" formControlName="invitee_email" class="form-control" placeholder="{{ placeholder }}"
-           [ngClass]="{ 'is-invalid': submitted && f.invitee_email.errors }"/>
-    <div *ngIf="submitted && f.invitee_email.errors" class="invalid-feedback">
-      <div *ngIf="f.invitee_email.errors.required">Valid email is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <input type="hidden" formControlName="study_id" class="form-control"
-           [ngClass]="{ 'is-invalid': submitted && f.study_id.errors }"/>
-  </div>
-  <br>
-  <br>
-  <button (click)="onSubmit()">Submit</button>
-
-</form>
-{{ form.value | json}}

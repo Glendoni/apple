@@ -1,10 +1,11 @@
 
-<hr/>
-<div>
 
+<div>
   <div (click)="onCancel()">Cancel</div>
 
 </div>
+<p>This study must be completed by: {{ siteDetails.end_date | date :'fullDate' }}</p>
+<hr/>
 <div class="col-sm-12">
   <div class="card">
     <div class="card-body">
