@@ -36,6 +36,7 @@ import { SubUserListingComponent } from './sub-user-listing/sub-user-listing.com
 import { SubUsersComponent } from './sub-users/sub-users.component';
 import { SubListingEditComponent } from './sub-listing-edit/sub-listing-edit.component';
 import { InviteStudyUsersComponent } from './invite-study-users/invite-study-users.component';
+import { GlobalSiteConfigComponent } from './form-cms/global-site-config/global-site-config.component';
 
 @NgModule({
     imports: [
@@ -72,6 +73,7 @@ import { InviteStudyUsersComponent } from './invite-study-users/invite-study-use
         SubUsersComponent,
         SubListingEditComponent,
         InviteStudyUsersComponent,
+        GlobalSiteConfigComponent,
     ],
     providers: [
         AuthGuard,

@@ -4,6 +4,8 @@ import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from "@angular/router";
 
+import { UserType } from '../userType';
+
 
 import {User, DynamicForm} from '../_models';
 
@@ -89,7 +91,7 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
         return this.http.get(this.url + '/api/study_users_form_populators/'+formId);
     }
 
-    getFormUser(){
+    getFormUser() {
 
         return this.http.get(this.url + '/api/getFormUser');
 
@@ -97,5 +99,12 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
 
     onUpload(e) {
         console.log(e);
+    }
+
+
+    getName(): Observable<UserType[]>{
+
+        return this.http.get<UserType[]>(this.url + '/api/user');
+
     }
 }

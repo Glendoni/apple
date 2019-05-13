@@ -1,19 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {first} from 'rxjs/operators';
 import {DynamicformService} from '../../_services';
-
+import { UserType } from '../../userType';
+import { Observable, Subject } from 'rxjs';
 import {User} from '../../_models';
 import {UserService} from '../../_services';
 
-@Component({templateUrl: 'home.component.html'})
+@Component({templateUrl: 'home.component.html'
+})
 export class HomeComponent implements OnInit {
     users: User[] = [];
     fields;
     moduleSwitcher;
     logged_in_user: string;
+    usert$: Observable<UserType[]>;
 
     constructor(private userService: UserService, private service: DynamicformService) {
-        //console.log('');
+     //  this.service.getName().subscribe();
+
+    // console.log(this.usert$)
     }
 
     ngOnInit() {
@@ -21,9 +26,9 @@ export class HomeComponent implements OnInit {
         this.service.getStudies().subscribe((data) => {
             this.fields = data;
         });
-        this.service.getFormUser().subscribe((data) => {
-            this.logged_in_user = data.name;
-        });
+        // this.service.getFormUser().subscribe((data) => {
+        //     this.logged_in_user = data.name;
+        // });
     }
 
     onModuleSwitcher(value): void {

@@ -19,7 +19,7 @@
   <div class="form-group">
     <label for="description">Description</label>
     <textarea formControlName="description" class="form-control" placeholder="{{ placeholder }}"
-              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"></textarea>
+              [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
     <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
       <div *ngIf="f.description.errors.required">description is required</div>
     </div>
@@ -57,3 +57,4 @@
   <button (click)="onSubmit()">Submit</button>
 </form>
 
+{{ form.value | json}}

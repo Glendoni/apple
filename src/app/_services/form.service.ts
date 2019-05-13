@@ -44,4 +44,16 @@ saveFormForLater(value :any, formId){
     return this.http.get(this.url + '/api/formStudyItemListings/'+formId);
   }
 
+  globalsiteconfig(value){
+
+    return this.http.post(this.url + '/api/globalsiteconfig/', value);
+
+  }
+
+  getGlobalSiteConfig(value){
+
+    return this.http.get(this.url + '/api/getGlobalSiteConfig/'+value);
+
+  }
+
 }

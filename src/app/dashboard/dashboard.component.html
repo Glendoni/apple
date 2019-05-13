@@ -1,5 +1,5 @@
 <div *ngIf="moduleSwitcher">
-    <p><a (click)="onCreateStudy()">Create New Study</a></p>
+    <p><a (click)="onCreateStudy()">Create New Study</a> | <a (click)="onGlobalSiteConfig()">Global Site Config</a></p>
 
    <p *ngFor="let field of fields">
 
@@ -8,6 +8,7 @@
        | <a (click)="onSubListings([field.id])">Study Groups</a>
        | <a (click)="onInviteStudyUsers([field])">Invite Participants</a>
        | <a (click)="onStudyItemsAndParticipants([field])">Participants</a>
+       | <a (click)="onGlobalSiteConfigOverwrite([field])">Global Site Config Overwrite</a>
 
        <br>
       </p>
@@ -41,5 +42,13 @@
             <app-study-listing [siteDetails]="studyQuestions" (close)="onClose($event)"></app-study-listing>
     </div>
 
+<div *ngIf="globalSiteConfigShow">
+            <app-global-site-config [siteDetails]="globalSiteConfig" (close)="onClose($event)"></app-global-site-config>
+    </div>
+
+
+<div *ngIf="globalSiteConfigOverwrite">
+    <app-global-site-config [siteDetails]="globalSiteConfigOverwrite"  (close)="onClose($event)"></app-global-site-config>
+</div>
 
 

@@ -1,19 +1,14 @@
-<h2>
-  Study: {{ siteDetails.name }} <br> <span>{{ siteDetails.description}}<br>{{ created_at }}</span>
-
-</h2>
-<h4 *ngIf="studyItem">Study Item: <i>{{ studyItem }}</i></h4>
-
+<h4>
+ Category: {{ siteDetails.name }}  <br><span *ngIf="studyItem">Item: <i>{{ studyItem }}</i></span>
+</h4>
 <h4 *ngIf="!studyItemListingDataLength">This study is scheduled to start on: {{ siteDetails.start_date | date :'fullDate'  }} </h4>
-<h5  *ngIf="studyItemListingDataLength">Please click on link below to begin study</h5>
 <div *ngIf="fieldlist">
-
+    <h5  *ngIf="studyItemListingDataLength">Please click on link below to begin study</h5>
 <p  *ngFor="let field of fields">
  <strong><a  (click)="onItemQuestions(field)"  routerLinkActive="active" >{{field.name }}</a></strong>
   <br>
 </p>
 </div>
-
 <div *ngIf="itemQuestions">
   <app-form [siteDetails]="itemQuestions"  (close)="onClose($event)"></app-form>
 </div>

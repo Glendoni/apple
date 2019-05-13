@@ -19,7 +19,9 @@ export class DashboardComponent implements OnInit {
     studyItemsAndParticipants = false;
     subListing = false;
     studyQuestions = false;
-
+    globalSiteConfig =false;
+    globalSiteConfigOverwrite = false;
+    globalSiteConfigShow = false;
     constructor(private service: DynamicformService) {
     }
 
@@ -41,6 +43,20 @@ export class DashboardComponent implements OnInit {
     onCreateStudy(): void {
         this.moduleSwitcher = false;
         this.createStudy = true;
+    }
+
+    onGlobalSiteConfig(): void {
+
+
+        this.moduleSwitcher = false;
+        this.globalSiteConfigShow = true;
+        this.globalSiteConfig = true;
+    }
+    onGlobalSiteConfigOverwrite(value): void {
+
+
+        this.moduleSwitcher = false;
+        this.globalSiteConfigOverwrite = value[0];
     }
 
     onEditStudy(value) {
@@ -74,5 +90,7 @@ export class DashboardComponent implements OnInit {
         this.moduleSwitcher = true;
         this.studyQuestions = false;
         this.studyItemsAndParticipants = false;
+        this.globalSiteConfigOverwrite = false;
+        this.globalSiteConfigShow = false;
     }
 }

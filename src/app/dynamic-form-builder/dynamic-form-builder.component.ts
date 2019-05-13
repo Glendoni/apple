@@ -13,8 +13,9 @@ import {DynamicformService, FormService} from "../_services";
       <div class="form-group row">
         <div class="col-md-3"></div>
         <div class="col-md-9">
-        
-          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+        <button type="submit" [disabled]="form.valid"  class="btn btn-primary">Save For Later</button> |
+          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save & Complete</button>
+          
           <strong >Saved all values</strong>
         </div>
       </div>

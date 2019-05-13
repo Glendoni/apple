@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {AuthenticationService, FormService} from "../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-form-sub-listing',
-  templateUrl: './form-sub-listing.component.html',
-  styleUrls: ['./form-sub-listing.component.css']
+  templateUrl: './form-sub-listing.component.html'
 })
 export class FormSubListingComponent implements OnInit {
 
@@ -20,6 +20,7 @@ export class FormSubListingComponent implements OnInit {
   studyItemListingDataLength = true;
   constructor(private fb: FormBuilder, private service: FormService, private route: ActivatedRoute,
               private router: Router,
+              private _location: Location,
               private authenticationService: AuthenticationService) {
   }
 
@@ -50,4 +51,5 @@ if(!value.length) {
   onClose() {
     this.close.emit(null);
   }
+
 }

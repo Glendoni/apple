@@ -1,0 +1,62 @@
+
+<h2>Global Site Config </h2>
+
+
+<div> <p (click)="onCancel()">Cancel</p></div>
+
+{{ siteDetails | json }}
+
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label for="name">Site Name</label>
+    <input type="text" formControlName="site_name" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.site_name.errors }"/>
+    <div *ngIf="submitted && f.site_name.errors" class="invalid-feedback">
+      <div *ngIf="f.site_name.errors.required">site_name is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="intro_text">Form Intro Text</label>
+    <textarea formControlName="intro_text" class="form-control" placeholder="{{ placeholder }}"
+              [ngClass]="{ 'is-invalid': submitted && f.intro_text.errors }"></textarea>
+    <div *ngIf="submitted && f.intro_text.errors" class="invalid-feedback">
+      <div *ngIf="f.intro_text.errors.required">description is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="path_to_logo">Path To Logo</label>
+    <input type="text" formControlName="path_to_logo" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.path_to_logo.errors }"/>
+    <div *ngIf="submitted && f.path_to_logo.errors" class="invalid-feedback">
+      <div *ngIf="f.path_to_logo.errors.required">name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="background_colour">Background Colour</label>
+    <input type="color" formControlName="background_colour" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.background_colour.errors }"/>
+    <div *ngIf="submitted && f.background_colour.errors" class="invalid-feedback">
+      <div *ngIf="f.background_colour.errors.required">Invite Code is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="text_colour">Text Colour</label>
+    <input type="color" formControlName="text_colour" class="form-control" placeholder="{{ placeholder }}"
+           [ngClass]="{ 'is-invalid': submitted && f.text_colour.errors }"/>
+    <div *ngIf="submitted && f.text_colour.errors" class="invalid-feedback">
+      <div *ngIf="f.text_colour.errors.required">Text Colour is required</div>
+    </div>
+  </div>
+
+  <br>
+  <div class="form-group">
+    <input type="hidden" formControlName="study_id" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.study_id.errors }"/>
+  </div>
+  <br>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+
+{{ form.value | json}}

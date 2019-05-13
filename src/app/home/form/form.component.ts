@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
     unsubcribe: any;
     public fields;
     public fieldvalues;
+    public proceed = false;
 
     constructor(private service: FormService) {
         this.form = new FormGroup({
@@ -31,32 +32,10 @@ export class FormComponent implements OnInit {
         this.service.getQuestionStreams(this.siteDetails.id).subscribe((dynamic) => {
             this.fields = dynamic;
             this.fieldvalues =dynamic[0].question_uniqid;
-
-
-//this.getFormValues(dynamic[0].question_uniqid);
-
-            // this.service.getFormValues(dynamic[0].question_uniqid).subscribe((data) => {
-            //     this.fieldvalues = data;
-            //
-            //     console.log(this.fieldvalues);
-            // })
         });
 
-        this.form = new FormGroup({
-            // fields: new FormControl(JSON.stringify(this.fields))
-        });
+
     }
-
-// getFormValues(form_id){
-//
-//     this.service.getFormValues(form_id).subscribe((data) => {
-//        this.fieldvalues = data;
-//
-//         console.log(this.fieldvalues);
-//     })
-//
-// }
-
 
     // convenience getter for easy access to form fields
     get f() {
@@ -67,10 +46,12 @@ export class FormComponent implements OnInit {
         this.close.emit(null);
     }
 
+    onProceed(){
+        this.proceed = true;
+    }
+
     onSubmit() {
-
         console.log('value: ', this.form.value);
-
     }
 
     parentSubmit(event) {

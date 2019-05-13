@@ -4,12 +4,19 @@
   <div (click)="onCancel()">Cancel</div>
 
 </div>
+
+<div *ngIf="!proceed">
+<p><strong>Purpose of study:</strong><br> {{ siteDetails.description }}</p>
 <p>This study must be completed by: {{ siteDetails.end_date | date :'fullDate' }}</p>
+
+<p><strong>Please Note:<br> If you decide to choose the complete later option please ignore all validation alert messages</strong></p>
+<button *ngIf="!proceed" (click)="onProceed()">Agree and Proceed to Questions</button>
 <hr/>
-<div class="col-sm-12">
+</div>
+<div *ngIf="proceed" class="col-sm-12" >
   <div class="card">
     <div class="card-body">
-      <dynamic-form-builder *ngIf="fields" [fields]="fields" [fieldvalue]="fieldvalues" (onSubmit)="parentSubmit($event)" (onSubmit)="parentSubmit($event)"></dynamic-form-builder>
+      <dynamic-form-builder *ngIf="fields" [fields]="fields" [fieldvalue]="fieldvalues" (onSubmit)="parentSubmit($event)"></dynamic-form-builder>
     </div>
   </div>
 </div>

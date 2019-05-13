@@ -1,5 +1,4 @@
-<p>Hi {{logged_in_user}}</p>
-    <nav>
+<nav>
         <a (click)="onModuleSwitcher(false)">Home</a>
 
     </nav>
@@ -10,8 +9,6 @@
 <div *ngIf="moduleSwitcher">
 
     <app-form-sub-listing [siteDetails]="moduleSwitcher" (close)="onClose($event)"></app-form-sub-listing>
-
-
 </div>
 
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
