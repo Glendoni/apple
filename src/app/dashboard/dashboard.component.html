@@ -5,10 +5,10 @@
 
        <a (click)="onEditStudy([field])"> {{field.name }}</a>
        | <a  (click)="onStudyQuestions(field)" routerLinkActive="active" >Study Questions</a>
-       | <a (click)="onSubListings([field.id])">Study Groups</a>
-       | <a (click)="onInviteStudyUsers([field])">Invite Participants</a>
-       | <a (click)="onStudyItemsAndParticipants([field])">Participants</a>
-       | <a (click)="onGlobalSiteConfigOverwrite([field])">Global Site Config Overwrite</a>
+       | <a (click)="onSubListings([field.id])">Study Group Items</a>
+       | <a (click)="onInviteStudyUsers([field])">Invite New Participants</a>
+       | <a (click)="onStudyItemsAndParticipants([field])">Groups and Participants</a>
+       | <a (click)="onGlobalSiteConfigOverwrite([field])">Local Site Config Overwrite</a>
 
        <br>
       </p>

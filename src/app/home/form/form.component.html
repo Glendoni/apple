@@ -4,7 +4,7 @@
   <div (click)="onCancel()">Cancel</div>
 
 </div>
-
+{{ siteDetails | json}}
 <div *ngIf="!proceed">
 <p><strong>Purpose of study:</strong><br> {{ siteDetails.description }}</p>
 <p>This study must be completed by: {{ siteDetails.end_date | date :'fullDate' }}</p>

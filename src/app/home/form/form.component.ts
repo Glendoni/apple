@@ -22,16 +22,16 @@ export class FormComponent implements OnInit {
             //fields: new FormControl(JSON.stringify(this.fields))
         });
         this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-            console.log(update);
+            //console.log(update);
             this.fields = JSON.parse(update.fields);
         });
     }
 
     ngOnInit(): void {
 
-        this.service.getQuestionStreams(this.siteDetails.id).subscribe((dynamic) => {
+        this.service.getQuestionStreams(this.siteDetails.study_id).subscribe((dynamic) => {
             this.fields = dynamic;
-            this.fieldvalues =dynamic[0].question_uniqid;
+            this.fieldvalues =this.siteDetails.id;
         });
 
 
@@ -51,15 +51,31 @@ export class FormComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log('value: ', this.form.value);
+       // console.log('value: ', this.form.value);
     }
 
     parentSubmit(event) {
         // this.form.controls['name'].setValue(200);
-        console.log(this.fields[0].question_uniqid);
-        this.service.saveFormForLater(event, this.fields[0].question_uniqid).subscribe((data) => {
+        //console.log(this.fields[0]);
 
-            console.log(data);
-        })
+        if (!event.valid) {
+            //  this.service.saveFormForLater(event, this.fields[0].studyId,this.siteDetails.id).subscribe((data) => {
+            //
+            this.service.saveFormForLater(event, this.siteDetails.id).subscribe((data) => {
+                //console.log(this.fields[0].question_uniqid);
+
+
+            })
+        } else {
+
+            this.service.saveFormFor(event, this.fields[0].question_uniqid).subscribe((data) => {
+
+            })
+
+            // this.service.saveFormForLater(event, this.fields[0].question_uniqid).subscribe((data) => {
+            //
+            //     console.log(data);
+            //
+        }
     }
 }

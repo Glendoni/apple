@@ -31,10 +31,7 @@ export class FormService {
     return this.http.post(this.url + '/api/invite/', value);
   }
 
-saveFormForLater(value :any, formId){
-  return this.http.post(this.url + '/api/saveForLater/'+formId, value);
 
-}
   getFormValues(formId){
   return this.http.get(this.url + '/api/getFormValues/'+formId);
 
@@ -53,6 +50,16 @@ saveFormForLater(value :any, formId){
   getGlobalSiteConfig(value){
 
     return this.http.get(this.url + '/api/getGlobalSiteConfig/'+value);
+
+  }
+
+  saveFormForLater(value :any, formId){
+    return this.http.post(this.url + '/api/saveForLater/'+formId, value);
+
+  }
+
+  saveFormForLatertrue(value :any, studyId,formId){
+    return this.http.post(this.url + '/api/formsaver/'+studyId+'/'+formId, value);
 
   }
 

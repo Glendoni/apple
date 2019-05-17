@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService } from '../_services';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({selector: 'app-register',templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
-  
+  @Input() siteDetails;
     registerForm: FormGroup;
     loading = false;
     submitted = false;
@@ -21,10 +21,15 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             name: ['', Validators.required],
-            email: ['', Validators.required],
+            email: [this.siteDetails, Validators.required],
             password: ['', Validators.required],
             c_password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+        })
+
+
+       // this.f.email.setValue(this.siteDetails);
+   console.log(this.siteDetails)
+       //this.f.email.setValue(this.siteDetails);
     }
 
     // convenience getter for easy access to form fields

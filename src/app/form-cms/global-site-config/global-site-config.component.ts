@@ -48,6 +48,7 @@ export class GlobalSiteConfigComponent implements OnInit {
             console.log(this.study_id);
 
             data = data[0];
+
             if(data) {
                 this.f.site_name.setValue(data.site_name);
                 this.f.intro_text.setValue(data.intro_text);

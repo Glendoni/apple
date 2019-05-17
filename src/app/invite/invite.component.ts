@@ -9,7 +9,9 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./invite.component.css']
 })
 export class InviteComponent implements OnInit {
+
   subscribedParam: string;
+  siteDetail;
   constructor(private  route: ActivatedRoute,
               private  router: Router,
               private service: DynamicformService,) { }
@@ -24,9 +26,13 @@ export class InviteComponent implements OnInit {
 
 if(data){
 
+
+console.log( data[0].invitee_email)
+    this.siteDetail = data[0].invitee_email;
+
   //console.log(data[0].redirect)
- this.router.navigate(['/'+data[0].redirect]);
-  console.log('go go go');
+ //this.router.navigate(['/'+data[0].redirect]);
+  console.log('go go goss');
 }else{
 
   console.log('no no no');

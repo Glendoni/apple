@@ -28,7 +28,7 @@ export class FormSubListingComponent implements OnInit {
 
     this.service.studyItemListing(this.siteDetails.id).subscribe(data => {
       this.fields = data;
-
+console.log(data)
       this.showhideMessage(data);
 
     });
@@ -45,7 +45,7 @@ if(!value.length) {
 
   onItemQuestions(value){
     this.studyItem = value.name
-    this.itemQuestions = this.siteDetails;
+    this.itemQuestions = value;
     this.fieldlist = false;
   }
   onClose() {

@@ -1,4 +1,7 @@
 <p>
   invite works!
 </p>
-URL: {{  subscribedParam }}
+
+<div *ngIf="siteDetail">
+<app-register [siteDetails]="siteDetail"></app-register>
+</div>

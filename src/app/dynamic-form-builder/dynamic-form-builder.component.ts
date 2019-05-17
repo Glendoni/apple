@@ -20,7 +20,7 @@ import {DynamicformService, FormService} from "../_services";
         </div>
       </div>
  
-    </form> {{ form.value | json  }}
+    </form> {{ form.value | json  }} {{ form.valid }}
   `,
 })
 export class DynamicFormBuilderComponent implements OnInit {
@@ -60,9 +60,11 @@ export class DynamicFormBuilderComponent implements OnInit {
             //console.log(this.fieldvalues);
             for (var key in p) {
                 if (p.hasOwnProperty(key)) {
+                    console.log(p[key])
 
-                    this.form.controls['' + key + ''].setValue(p[key]);
-                }
+    this.form.controls['' + key + ''].setValue(p[key]);
+}
+
             }
         })
     }
