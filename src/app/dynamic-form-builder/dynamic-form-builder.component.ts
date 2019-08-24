@@ -5,7 +5,7 @@ import {DynamicformService, FormService} from "../_services";
 @Component({
     selector: 'dynamic-form-builder',
     template: `
-    <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
+    <form (ngSubmit)="onSaveForm(this.form.value)" [formGroup]="form" class="form-horizontal">
       <div *ngFor="let field of fields">
           <field-builder [field]="field" [form]="form"></field-builder>
       </div>
@@ -25,15 +25,13 @@ import {DynamicformService, FormService} from "../_services";
 })
 export class DynamicFormBuilderComponent implements OnInit {
     @Output() onSubmit = new EventEmitter();
+    @Output() onSubmitOfficial = new EventEmitter();
     @Input() fields: any[] = [];
     @Input() fieldvalue: any[] = [];
 ;
     form: FormGroup;
 
-    constructor(private service: FormService) {
-
-
-    }
+    constructor(private service: FormService) {}
 
     ngOnInit() {
 
@@ -50,22 +48,31 @@ export class DynamicFormBuilderComponent implements OnInit {
             }
         }
 
-
         this.form = new FormGroup(fieldsCtrls);
 
         this.service.getFormValues(this.fieldvalue).subscribe((data) => {
-
-
             const p = data;
-            //console.log(this.fieldvalues);
             for (var key in p) {
                 if (p.hasOwnProperty(key)) {
                     console.log(p[key])
 
-    this.form.controls['' + key + ''].setValue(p[key]);
-}
+                    this.form.controls['' + key + ''].setValue(p[key]);
+                }
 
             }
-        })
+        });
+    }
+
+    onSaveForm(formData) {
+
+        if (this.form.valid) {
+
+
+            this.onSubmitOfficial.emit(this.form.value)
+        } else {
+
+
+             this.onSubmit.emit(this.form.value)
+        }
     }
 }

@@ -3,9 +3,9 @@
 
 <div> <p (click)="onCancel()">Cancel</p></div>
 
+<div *ngIf="f.name">
 
-
-<form [formGroup]="form">
+<form [formGroup]="form"  >
 
   <div class="form-group">
     <label for="name">Name</label>
@@ -58,3 +58,4 @@
 </form>
 
 {{ form.value | json}}
+</div>

@@ -18,7 +18,7 @@ export class DynamicformService {
     constructor(private http: HttpClient) {
     }
 
-    url = 'http://127.0.0.1:8000';
+    url = 'http://127.0.0.1:8001';
 
     edit;
     let;
@@ -46,8 +46,11 @@ return this.http.get<User[]>('http://127.0.0.1:8000/api/get-details');
     getStudies() {
         return this.http.get(this.url + '/api/studies/');
     }
+    formGetStudies() {
+        return this.http.get(this.url + '/api/formGetStudies/');
+    }
     getStudy(id) {
-        return this.http.get(this.url + '/api/studies/'+ id);
+        return this.http.get(this.url + '/api/studies/' + id);
     }
 
     editStudy(value: any) {

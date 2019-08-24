@@ -127,13 +127,13 @@ export class StudyListingEditComponent implements OnInit {
 
     onCancel() {
         this.close.emit(null);
-        this.addField = false;
-        this.createNewField = false;
+        // this.addField = false;
+        // this.createNewField = false;
     }
     onClose() {
 
-        this.addField = true;
-        this.createNewField = true;
-        this.showListingEditer = false;
+        // this.addField = true;
+        // this.createNewField = true;
+        // this.showListingEditer = false;
     }
 }

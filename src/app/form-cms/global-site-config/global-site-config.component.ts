@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, AfterViewInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService, FormService} from "../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {first} from "rxjs/operators";
   templateUrl: './global-site-config.component.html',
   styleUrls: ['./global-site-config.component.css']
 })
-export class GlobalSiteConfigComponent implements OnInit {
+export class GlobalSiteConfigComponent implements OnInit, AfterViewInit {
 
     form: FormGroup;
     submitted = false;
@@ -32,7 +32,6 @@ export class GlobalSiteConfigComponent implements OnInit {
             this.study_id = '';
         }
 
-
         this.form = this.fb.group({
             site_name: ['', Validators.required],
             path_to_logo: [''],
@@ -41,22 +40,8 @@ export class GlobalSiteConfigComponent implements OnInit {
             background_colour: ['#ffffff'],
             text_colour: ['#000000'],
         });
-        //
 
 
-        this.service.getGlobalSiteConfig(this.study_id).subscribe(data => {
-            console.log(this.study_id);
-
-            data = data[0];
-
-            if(data) {
-                this.f.site_name.setValue(data.site_name);
-                this.f.intro_text.setValue(data.intro_text);
-                this.f.path_to_logo.setValue(data.path_to_logo);
-                this.f.background_colour.setValue(data.background_colour);
-                this.f.text_colour.setValue(data.text_colour);
-            }
-        })
 
     }
 
@@ -88,5 +73,17 @@ export class GlobalSiteConfigComponent implements OnInit {
 
         this.close.emit(null);
 
+    }
+
+    ngAfterViewInit() {
+        this.service.getGlobalSiteConfig(this.study_id).subscribe(data => {
+            console.log(this.study_id);
+
+            data = data[0];
+
+            if (data) {
+
+            }
+        });
     }
 }

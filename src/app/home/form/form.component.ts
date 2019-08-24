@@ -16,6 +16,8 @@ export class FormComponent implements OnInit {
     public fields;
     public fieldvalues;
     public proceed = false;
+    public showForm = false;
+    public showFormSuccessMessage = false;
 
     constructor(private service: FormService) {
         this.form = new FormGroup({
@@ -31,7 +33,7 @@ export class FormComponent implements OnInit {
 
         this.service.getQuestionStreams(this.siteDetails.study_id).subscribe((dynamic) => {
             this.fields = dynamic;
-            this.fieldvalues =this.siteDetails.id;
+            this.fieldvalues = this.siteDetails.id;
         });
 
 
@@ -46,36 +48,26 @@ export class FormComponent implements OnInit {
         this.close.emit(null);
     }
 
-    onProceed(){
+    onProceed() {
         this.proceed = true;
+        this.showForm = true;
     }
 
     onSubmit() {
-       // console.log('value: ', this.form.value);
+        // console.log('value: ', this.form.value);
     }
 
     parentSubmit(event) {
-        // this.form.controls['name'].setValue(200);
-        //console.log(this.fields[0]);
-
-        if (!event.valid) {
-            //  this.service.saveFormForLater(event, this.fields[0].studyId,this.siteDetails.id).subscribe((data) => {
-            //
             this.service.saveFormForLater(event, this.siteDetails.id).subscribe((data) => {
                 //console.log(this.fields[0].question_uniqid);
-
-
             })
-        } else {
+    }
 
-            this.service.saveFormFor(event, this.fields[0].question_uniqid).subscribe((data) => {
+    submitOfficial(event){
+        this.service.saveForm(event, this.siteDetails.id,this.siteDetails.study_id).subscribe((data) => {
 
-            })
-
-            // this.service.saveFormForLater(event, this.fields[0].question_uniqid).subscribe((data) => {
-            //
-            //     console.log(data);
-            //
-        }
+            this.showForm = false;
+            this.showFormSuccessMessage = true
+    })
     }
 }

@@ -10,7 +10,7 @@ export class AuthenticationService {
 
     login(email: string, password: string) {
         console.log(email);
-        return this.http.post('http://localhost:8000/api/login?email=' +
+        return this.http.post('http://localhost:8001/api/login?email=' +
             email + '&password=' +
             password, JSON.stringify({email: email, password: password}))
             .pipe(map((res: any) => {

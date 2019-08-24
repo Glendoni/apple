@@ -12,7 +12,7 @@ export class FormService {
   constructor(private http: HttpClient) {
   }
 
-  url = 'http://127.0.0.1:8000';
+  url = 'http://127.0.0.1:8001';
 
   edit;
   let;
@@ -33,7 +33,7 @@ export class FormService {
 
 
   getFormValues(formId){
-  return this.http.get(this.url + '/api/getFormValues/'+formId);
+  return this.http.get(this.url + '/api/getFormValues/' + formId);
 
 }
 
@@ -58,8 +58,8 @@ export class FormService {
 
   }
 
-  saveFormForLatertrue(value :any, studyId,formId){
-    return this.http.post(this.url + '/api/formsaver/'+studyId+'/'+formId, value);
+    saveForm(value :any, studyId,formId){
+    return this.http.post(this.url + '/api/saveForm/'+studyId+'/'+formId, value);
 
   }
 

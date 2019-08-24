@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import {User} from '../../_models';
 import {UserService} from '../../_services';
 
-@Component({templateUrl: 'home.component.html'
+@Component({templateUrl: 'home.component.html', styleUrls: ['home.component.css']
 })
 export class HomeComponent implements OnInit {
     users: User[] = [];
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         // this.userService.getAll().pipe(first()).subscribe(User => this.users.push(User));
-        this.service.getStudies().subscribe((data) => {
+        this.service.formGetStudies().subscribe((data) => {
             this.fields = data;
         });
         // this.service.getFormUser().subscribe((data) => {

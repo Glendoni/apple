@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService, DynamicformService} from "../_services";
 import {ActivatedRoute, Router} from "@angular/router";
-import {first} from "rxjs/operators";
+import {first, isEmpty} from 'rxjs/operators';
 
 @Component({
   selector: 'app-study-creater-edit',
@@ -32,13 +32,20 @@ export class StudyCreaterEditComponent implements OnInit {
     });
 
     this.service.getStudy(this.siteDetails.id).subscribe(data => {
+          if (data) {
+            this.f.name.setValue(data.name);
+            this.f.description.setValue(data.description);
+            this.f.invite_code.setValue(data.invite_code);
+            this.f.start_date.setValue(data.start_date);
+            this.f.end_date.setValue(data.end_date);
+          }
+        }
+    )
 
-      this.f.name.setValue(data.name);
-      this.f.description.setValue(data.description);
-      this.f.invite_code.setValue(data.invite_code);
-      this.f.start_date.setValue(data.start_date);
-      this.f.end_date.setValue(data.end_date);
-    })
+
+  }
+
+  ngOnAfter(){
 
   }
   // convenience getter for easy access to form fields

@@ -9,14 +9,22 @@
 <p><strong>Purpose of study:</strong><br> {{ siteDetails.description }}</p>
 <p>This study must be completed by: {{ siteDetails.end_date | date :'fullDate' }}</p>
 
-<p><strong>Please Note:<br> If you decide to choose the complete later option please ignore all validation alert messages</strong></p>
+<p><strong>Please Note:<br>Use the Save For Later button if need more time to complete the form   </strong></p>
 <button *ngIf="!proceed" (click)="onProceed()">Agree and Proceed to Questions</button>
 <hr/>
 </div>
-<div *ngIf="proceed" class="col-sm-12" >
+<div *ngIf="showForm" class="col-sm-12" >
   <div class="card">
     <div class="card-body">
-      <dynamic-form-builder *ngIf="fields" [fields]="fields" [fieldvalue]="fieldvalues" (onSubmit)="parentSubmit($event)"></dynamic-form-builder>
+      <dynamic-form-builder *ngIf="fields" [fields]="fields" [fieldvalue]="fieldvalues" (onSubmit)="parentSubmit($event)" (onSubmitOfficial)="submitOfficial($event)"></dynamic-form-builder>
     </div>
   </div>
+</div>
+
+<div *ngIf="showFormSuccessMessage" class="col-sm-12">
+    <div class="card">
+        <div class="card-body">
+<h1>Thank you for your participation</h1>
+        </div>
+    </div>
 </div>

@@ -28,11 +28,11 @@ export class SubListingEditComponent implements OnInit {
     });
 console.log(this.siteDetails);
     this.service.getStudyItem(this.siteDetails.id).subscribe(data => {
-console.log(data);
-      this.f.name.setValue(data[0].name);
-      this.f.note.setValue(data[0].note);
-      this.f.study_id.setValue(data[0].study_id);
-    })
+
+      this.f.name.setValue(data.name);
+      this.f.note.setValue(data.note);
+      this.f.study_id.setValue(data.study_id);
+    });
 
   }
 
